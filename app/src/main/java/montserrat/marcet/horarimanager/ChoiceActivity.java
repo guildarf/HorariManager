@@ -21,9 +21,18 @@ public class ChoiceActivity extends AppCompatActivity {
         mLogOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
+                FirebaseAuth.getInstance().signOut(); // perque ens faci el signout del firebase
                 startActivity(new Intent(ChoiceActivity.this, LoginActivity.class));
             }
         });
+
+        Button btn_crear_horari = (Button) findViewById(R.id.btn_crear_horari);
+        btn_crear_horari.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ChoiceActivity.this, SubjectsActivity.class));
+            }
+        });
+
     }
 }

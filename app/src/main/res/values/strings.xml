@@ -14,4 +14,8 @@
         completions."
     </string>
     <string name="auth_failed">Ha fallat l\'autentificació</string>
+
+    <!-- Strings related to choice -->
+    <string name="chose_horari">Carrega un horari</string>
+    <string name="btn_st_crear">Crear nou horari</string>
 </resources>
