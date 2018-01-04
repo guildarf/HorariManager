@@ -14,4 +14,23 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
+    <Button
+        android:id="@+id/btn_crear_horari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:text="@string/btn_st_crear"
+        android:layout_below="@+id/logout"
+        android:layout_toStartOf="@+id/logout" />
+
+    <TextView
+        android:id="@+id/txt_carrega_horari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_crear_horari"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="@string/chose_horari"
+        android:textSize="18sp" />
+
 </RelativeLayout>
