@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="llista_graus">
+        <item>Escull un grau</item>
+        <item>Enginyeria Electrònica Industrial i Automàtica</item>
+        <item>Enginyeria Elèctrica</item>
+        <item>Enginyeria Mecànica</item>
+        <item>Enginyeria Química</item>
+        <item>Enginyeria Tèxtil</item>
+        <item>Enginyeria Disseny i desenvolupament del producte</item>
+
+    </string-array>
+
+
+
+
+</resources>
