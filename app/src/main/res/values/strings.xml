@@ -17,5 +17,15 @@
 
     <!-- Strings related to choice -->
     <string name="chose_horari">Carrega un horari</string>
-    <string name="btn_st_crear">Crear nou horari</string>
+    <string name="btn_st_crear">Crea nou horari</string>
+
+    <!-- Strings related to subjects -->
+    <string name="btn_validate">Valida</string>
+    <string name="btn_cleaner">Neteja</string>
+    <string name="anomena_horari">Anomena horari</string>
+    <string name="accepta_horari">Accepta</string>
+    <string name="falta_nom">Anomena abans el teu horari</string>
+
+
+    <!-- Strings related to creation -->
 </resources>
