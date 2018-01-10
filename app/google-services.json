@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "417025034005",
+    "firebase_url": "https://horarimanager.firebaseio.com",
+    "project_id": "horarimanager",
+    "storage_bucket": "horarimanager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417025034005:android:f24b39654bb537c9",
+        "android_client_info": {
+          "package_name": "montserrat.marcet.horarimanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417025034005-oek3ajoa65lcbogkmljg2k8iegbcnbvd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "montserrat.marcet.horarimanager",
+            "certificate_hash": "78be9f8ea6b412f4e8d8671ee1ef46dfde115299"
+          }
+        },
+        {
+          "client_id": "417025034005-evg7epimju31gjksj5k7fu8efj70fh0p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsptgU8C8oRJr5I8FakT2J4RBnjKE57g0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417025034005-evg7epimju31gjksj5k7fu8efj70fh0p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
