@@ -8,10 +8,84 @@
         <item>Enginyeria Química</item>
         <item>Enginyeria Tèxtil</item>
         <item>Enginyeria Disseny i desenvolupament del producte</item>
-
     </string-array>
 
+    <string-array name="llista_quatrimestres">
+        <item>Q1</item>
+        <item>Q2</item>
+        <item>Q3</item>
+        <item>Q4</item>
+        <item>Q5</item>
+        <item>Q6</item>
+        <item>Q7</item>
+        <item>Q8</item>
+    </string-array>
 
+    <string-array name="electronica">
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+    </string-array>
+
+    <string-array name="electrica">
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+    </string-array>
+
+    <string-array name="mecanica">
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+    </string-array>
+
+    <string-array name="quimica">
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+    </string-array>
+
+    <string-array name="textil">
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+    </string-array>
+
+    <string-array name="disseny">
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>asign1;asign2;asign3:asign4;asign5</item>
+    </string-array>
 
 
 </resources>
