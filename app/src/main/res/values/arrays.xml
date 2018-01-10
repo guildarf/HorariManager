@@ -22,69 +22,69 @@
     </string-array>
 
     <string-array name="electronica">
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>e1asign1;asign2;asign3;asign4;asign5</item>
+        <item>e2asign1;asign2;asign3;asign4;asign5</item>
+        <item>e3asign1;asign2;asign3;asign4;asign5</item>
+        <item>e4asign1;asign2;asign3;asign4;asign5</item>
+        <item>e5asign1;asign2;asign3;asign4;asign5</item>
+        <item>e6asign1;asign2;asign3;asign4;asign5</item>
+        <item>e7asign1;asign2;asign3;asign4;asign5</item>
+        <item>e8asign1;asign2;asign3;asign4;asign5</item>
     </string-array>
 
     <string-array name="electrica">
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>el1asign1;asign2;asign3;asign4;asign5</item>
+        <item>el2asign1;asign2;asign3;asign4;asign5</item>
+        <item>el3asign1;asign2;asign3;asign4;asign5</item>
+        <item>el4asign1;asign2;asign3;asign4;asign5</item>
+        <item>el5asign1;asign2;asign3;asign4;asign5</item>
+        <item>el6asign1;asign2;asign3;asign4;asign5</item>
+        <item>el7asign1;asign2;asign3;asign4;asign5</item>
+        <item>el8asign1;asign2;asign3;asign4;asign5</item>
     </string-array>
 
     <string-array name="mecanica">
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>m1asign1;asign2;asign3;asign4;asign5</item>
+        <item>m2asign1;asign2;asign3;asign4;asign5</item>
+        <item>m3asign1;asign2;asign3;asign4;asign5</item>
+        <item>m4asign1;asign2;asign3;asign4;asign5</item>
+        <item>m5asign1;asign2;asign3;asign4;asign5</item>
+        <item>m6asign1;asign2;asign3;asign4;asign5</item>
+        <item>m7asign1;asign2;asign3;asign4;asign5</item>
+        <item>m8asign1;asign2;asign3;asign4;asign5</item>
     </string-array>
 
     <string-array name="quimica">
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>q1asign1;asign2;asign3;asign4;asign5</item>
+        <item>q2asign1;asign2;asign3;asign4;asign5</item>
+        <item>q3asign1;asign2;asign3;asign4;asign5</item>
+        <item>q4asign1;asign2;asign3;asign4;asign5</item>
+        <item>q5asign1;asign2;asign3;asign4;asign5</item>
+        <item>q6asign1;asign2;asign3;asign4;asign5</item>
+        <item>q7asign1;asign2;asign3;asign4;asign5</item>
+        <item>q8asign1;asign2;asign3;asign4;asign5</item>
     </string-array>
 
     <string-array name="textil">
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>t1asign1;asign2;asign3;asign4;asign5</item>
+        <item>t2asign1;asign2;asign3;asign4;asign5</item>
+        <item>t3asign1;asign2;asign3;asign4;asign5</item>
+        <item>t4asign1;asign2;asign3;asign4;asign5</item>
+        <item>t5asign1;asign2;asign3;asign4;asign5</item>
+        <item>t6asign1;asign2;asign3;asign4;asign5</item>
+        <item>t7asign1;asign2;asign3;asign4;asign5</item>
+        <item>t8asign1;asign2;asign3;asign4;asign5</item>
     </string-array>
 
     <string-array name="disseny">
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
-        <item>asign1;asign2;asign3:asign4;asign5</item>
+        <item>d1asign1;asign2;asign3;asign4;asign5</item>
+        <item>d2asign1;asign2;asign3;asign4;asign5</item>
+        <item>d3asign1;asign2;asign3;asign4;asign5</item>
+        <item>d4asign1;asign2;asign3;asign4;asign5</item>
+        <item>d5asign1;asign2;asign3;asign4;asign5</item>
+        <item>d6asign1;asign2;asign3;asign4;asign5</item>
+        <item>d7asign1;asign2;asign3;asign4;asign5</item>
+        <item>d8asign1;asign2;asign3;asign4;asign5</item>
     </string-array>
 
 

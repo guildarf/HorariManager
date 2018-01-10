@@ -1,19 +1,23 @@
 package montserrat.marcet.horarimanager;
 
-import android.view.Gravity;
+import android.content.Context;
+import android.graphics.Typeface;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
 
 public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     // Sample data set. children[i] contains the children (String[]) for
     // groups[i].
     private String[] groups ;
     private String[][] children;
+    private Context context;
 
-    public MyExpandableListAdapter(String[] groups,String[][] children){
+    public MyExpandableListAdapter(String[] groups,String[][] children, Context context){
+        this.context=context;
         this.groups=groups;
         this.children=children;
     }
@@ -28,35 +32,55 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
     public int getChildrenCount(int groupPosition) {
         int i = 0;
-        try {
-            i = children[groupPosition].length;
 
-        } catch (Exception e) {
+        if(groupPosition<0||groupPosition>SubjectsActivity.MAX_QUATRIS){
+            i = children[groupPosition].length;
         }
+
 
         return i;
     }
 
-    public TextView getGenericView() {
-        // Layout parameters for the ExpandableListView
-        AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                ViewGroup.LayoutParams.FILL_PARENT, 64);
-
-        TextView textView = new TextView(MainActivity.this);
-        textView.setLayoutParams(lp);
-        // Center the text vertically
-        textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-        textView.setTextColor(R.color.marcyred);
-        // Set the text starting position
-        textView.setPadding(36, 0, 0, 0);
-        return textView;
+    public void changeChildren(String[][]newChildren){
+        children=newChildren;
+        notifyDataSetChanged();
     }
 
-    public View getChildView(int groupPosition, int childPosition,
+    @Override
+    public View getGroupView(int groupPosition, boolean isExpanded,
+                             View convertView, ViewGroup parent) {
+        String headerTitle = (String) getGroup(groupPosition);
+        if (convertView == null) {
+            LayoutInflater infalInflater = (LayoutInflater) this.context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.list_group, null);
+        }
+
+        TextView lblListHeader = (TextView) convertView
+                .findViewById(R.id.lblListHeader);
+        lblListHeader.setTypeface(null, Typeface.BOLD);
+        lblListHeader.setText(headerTitle);
+
+        return convertView;
+    }
+
+    @Override
+    public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-        TextView textView = getGenericView();
-        textView.setText(getChild(groupPosition, childPosition).toString());
-        return textView;
+
+        final String childText = (String) getChild(groupPosition, childPosition);
+
+        if (convertView == null) {
+            LayoutInflater infalInflater = (LayoutInflater) this.context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.list_item, null);
+        }
+
+        TextView txtListChild = (TextView) convertView
+                .findViewById(R.id.lblListItem);
+
+        txtListChild.setText(childText);
+        return convertView;
     }
 
     public Object getGroup(int groupPosition) {
@@ -69,13 +93,6 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
     public long getGroupId(int groupPosition) {
         return groupPosition;
-    }
-
-    public View getGroupView(int groupPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
-        TextView textView = getGenericView();
-        textView.setText(getGroup(groupPosition).toString());
-        return textView;
     }
 
     public boolean isChildSelectable(int groupPosition, int childPosition) {
