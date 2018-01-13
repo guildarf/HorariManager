@@ -11,6 +11,16 @@
 
     </string-array>
 
+    <!--Array amb els valors dels dies de la setmana-->
+    <string-array name="cabecera_tabla">
+        <item>Hores</item>
+        <item>Dl</item>
+        <item>Dm</item>
+        <item>Dx</item>
+        <item>Dj</item>
+        <item>Dv</item>
+    </string-array>
+
 
 
 
