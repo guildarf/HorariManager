@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -16,14 +17,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class SubjectsActivity extends AppCompatActivity {
 
     public static final int MAX_GRAUS = 6;
     public static final int MAX_QUATRIS = 8;
     Spinner sp_graus;
     String [] graus;
-    String [] quatrimestres;
-    String [][][] assignatures; //primera dimensio grau segona dimensio quatrimestres tercera dimensio assignatura;
+    Map<String,String[]> rawData;
+    List<String> quatrimestres;
+    HashMap<String,List<String>> assignatures;
     ExpandableListView subjectList;
     MyExpandableListAdapter subjectadapter;
 
@@ -34,14 +42,18 @@ public class SubjectsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_subjects);
         sp_graus = (Spinner) findViewById(R.id.sp_graus);
         graus = getResources().getStringArray(R.array.llista_graus);
+        rawData=new HashMap<>();
+        initData();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(),android.R.layout.simple_spinner_item,graus);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        quatrimestres=Arrays.asList(getResources().getStringArray(R.array.llista_quatrimestres));
+        assignatures=new HashMap<>();
         sp_graus.setAdapter(adapter);
         sp_graus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     if(position!=0) Toast.makeText(getApplicationContext(),"Has triat "+graus[position], Toast.LENGTH_SHORT).show();
-                    actualitzar_adapter(position-1);
+                    omplirData(position-1);
             }
 
             @Override
@@ -49,28 +61,10 @@ public class SubjectsActivity extends AppCompatActivity {
             }
         });
 
-        String [][] asignaturestemp={
-                getResources().getStringArray(R.array.electronica),
-                getResources().getStringArray(R.array.electrica),
-                getResources().getStringArray(R.array.mecanica),
-                getResources().getStringArray(R.array.quimica),
-                getResources().getStringArray(R.array.textil),
-                getResources().getStringArray(R.array.disseny)
-        };
-        assignatures=new String[MAX_GRAUS][MAX_QUATRIS][];
-        for (int i=0;i<MAX_GRAUS;i++){ //for per assignatura
-            for (int j=0;j<MAX_QUATRIS;j++){ //for per quatri
-                assignatures[i][j]=asignaturestemp[i][j].split(";");
-            }
-        }
 
-        quatrimestres=getResources().getStringArray(R.array.llista_quatrimestres);
-
-
-
-
+        omplirData(-1);
         subjectList=(ExpandableListView)findViewById(R.id.subject_list);
-        subjectadapter=new MyExpandableListAdapter(quatrimestres, new String[MAX_QUATRIS][1],this.getBaseContext());
+        subjectadapter = new MyExpandableListAdapter(this,quatrimestres,assignatures);
         subjectList.setAdapter(subjectadapter);
 
         final EditText mEdit = (EditText)findViewById(R.id.id_anomena_horai);
@@ -92,15 +86,41 @@ public class SubjectsActivity extends AppCompatActivity {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
-    private void actualitzar_adapter(int grau) {
-        if(grau<0||grau>MAX_GRAUS){
-            subjectadapter.changeChildren(new String[MAX_QUATRIS][1]);
-        }
-        else {
-            subjectadapter.changeChildren(assignatures[grau]);
-        }
-        for(int i=0;i<MAX_QUATRIS;i++){
-            subjectList.collapseGroup(i);
-        }
+    private void initData() {
+       //TODO hacer que esto funcione siempre aunque cambien las carreras
+
+        rawData.put(graus[0],getResources().getStringArray(R.array.electronica));
+        rawData.put(graus[1],getResources().getStringArray(R.array.electrica));
+        rawData.put(graus[2],getResources().getStringArray(R.array.mecanica));
+        rawData.put(graus[3],getResources().getStringArray(R.array.quimica));
+        rawData.put(graus[4],getResources().getStringArray(R.array.textil));
+        rawData.put(graus[5],getResources().getStringArray(R.array.disseny));
+
     }
+
+    private void omplirData(int grau) {
+
+
+        if(grau==-1){
+
+            for(String s:quatrimestres) {
+                List sis=new ArrayList<String>();
+                sis.add(s);
+                assignatures.put(s,sis);
+            }
+        }
+        else{
+            String [] asi=rawData.get(graus[grau]);
+            int i=0;
+            for(String s:quatrimestres) {
+                List sis=Arrays.asList(asi[i].split(";"));
+                assignatures.put(s,sis);
+                i++;
+            }
+            subjectadapter.notifyDataSetChanged();
+        }
+
+
+    }
+
 }
