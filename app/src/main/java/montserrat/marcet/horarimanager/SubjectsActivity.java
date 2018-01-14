@@ -24,7 +24,7 @@ public class SubjectsActivity extends AppCompatActivity {
     Spinner sp_graus;
     String [] graus;
     List<String> quatrimestres;
-    HashMap<String,List<String>> assignatures;//Mapa d'assignatures per quatrimestres es sobreescriu cada cop que es canvia de grau
+    HashMap<String,List<Assignatura>> assignatures;//Mapa d'assignatures per quatrimestres es sobreescriu cada cop que es canvia de grau
     Map<String,String[]> rawData;
     ExpandableListView subjectList;
     MyExpandableListAdapter subjectadapter;
@@ -107,6 +107,16 @@ public class SubjectsActivity extends AppCompatActivity {
 
         subjectList=(ExpandableListView)findViewById(R.id.subject_list);
         subjectadapter = new MyExpandableListAdapter(this,quatrimestres,assignatures);
+        subjectList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPos, int childPos, long l) {
+
+                ((Assignatura)subjectadapter.getChild(groupPos,childPos)).toggleChecked();
+                subjectadapter.notifyDataSetChanged();
+
+                return false;
+            }
+        });
         subjectList.setAdapter(subjectadapter);
 
 
@@ -118,8 +128,8 @@ public class SubjectsActivity extends AppCompatActivity {
         if(grau==-1){
 
             for(String s:quatrimestres) {
-                List sis=new ArrayList<String>();
-                sis.add(s);
+                List sis=new ArrayList<Assignatura>();
+                sis.add(new Assignatura(s));
                 assignatures.put(s,sis);
             }
         }
@@ -127,7 +137,14 @@ public class SubjectsActivity extends AppCompatActivity {
             String [] asi=rawData.get(graus[grau]);
             int i=0;
             for(String s:quatrimestres) {
-                List sis=Arrays.asList(asi[i].split(";"));
+                String [] noms=asi[i].split(";");
+                List<Assignatura> sis=new ArrayList<>();
+
+                for (String nom :noms) {
+                    sis.add(new Assignatura(nom));
+                }
+
+
                 assignatures.put(s,sis);
                 i++;
             }
