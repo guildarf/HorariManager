@@ -115,9 +115,18 @@ public class SubjectsActivity extends AppCompatActivity {
                 Assignatura selected=((Assignatura)subjectadapter.getChild(groupPos,childPos));
                 selected.toggleChecked();
                 subjectadapter.notifyDataSetChanged();
-                numSelect++;
-                neteja.setText("Neteja ("+numSelect+")");
-                asignSelec.add(selected);
+                if(asignSelec.contains(selected)){
+                    numSelect--;
+                    asignSelec.remove(selected);
+                }else{
+                    numSelect++;
+                    asignSelec.add(selected);
+                }
+                if(numSelect!=0){
+                    neteja.setText("Neteja ("+numSelect+")");
+                }else{
+                    neteja.setText("Neteja");
+                }
                 return false;
             }
         });

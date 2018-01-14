@@ -2,45 +2,61 @@ package montserrat.marcet.horarimanager;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.ClipData;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.ListView;
+import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class CreationActivity extends AppCompatActivity {
+        private final int MAX_ASSIGNATURES=10;
+        private final int MAX_SUBGRUPS=6;
+        ArrayList<Assignatura> asignatures;
+        String[][] horari=new String[5][13];
+    private Tabla tabla;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation);
 
-        TextView Subject1 = (TextView) findViewById(R.id.Subject1);
-        Subject1.setText("PAM");
-        TextView Subject2 = (TextView) findViewById(R.id.Subject2);
-        Subject2.setText("CGRM");
-        TextView Subject3 = (TextView) findViewById(R.id.Subject3);
-        Subject3.setText("IE");
-        TextView Subject4 = (TextView) findViewById(R.id.Subject4);
-        Subject4.setText("MOP");
-        TextView Subject5 = (TextView) findViewById(R.id.Subject5);
-        Subject5.setText("VE");
+        asignatures=(ArrayList<Assignatura>) getIntent().getSerializableExtra(SubjectsActivity.ID_ASIGNSELECT);
+        asignatures.get(0).addHorari(new Horari("101",Horari.DILLUNS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
+        asignatures.get(0).addHorari(new Horari("102",Horari.DIJOUS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
+
+        asignatures.get(1).addHorari(new Horari("101",Horari.DIMARTS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
+        asignatures.get(1).addHorari(new Horari("102",Horari.DIJOUS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
+
+       // asignatures.get(2).addHorari(new Horari("101",Horari.DIMECRES,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
+
+       // asignatures.get(3).addHorari(new Horari("101",Horari.DIVENDRES,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
+
+        ListView list=(ListView)findViewById(R.id.asignaturas);
+        SelectorGrupAdapter adapter=new SelectorGrupAdapter(this,R.layout.list_item_activity_creation,asignatures,createListener());
+        list.setAdapter(adapter);
 
 
-
-
-
-        Tabla tabla = new Tabla(this, (TableLayout)findViewById(R.id.tabla));
+        tabla = new Tabla(this, (TableLayout)findViewById(R.id.tabla));
         tabla.agregarCabecera(R.array.cabecera_tabla);
         for(int i = 0; i < 13; i++)
         {
@@ -61,7 +77,73 @@ public class CreationActivity extends AppCompatActivity {
                 startActivity(new Intent(CreationActivity.this, ViewActivity.class));
             }
         });
+    }
 
+    private RadioGroup.OnCheckedChangeListener createListener() {
+
+        RadioGroup.OnCheckedChangeListener listener=new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(i==-1)return;
+                TextView tv=(TextView)((View)radioGroup.getParent()).findViewById(R.id.subject);
+                for(Assignatura a:asignatures){
+                    if(a.getName().equals(tv.getText())){
+                        switch (i){
+                            case R.id.rd_btn1:a.grupSelected=0;
+                                pintarTabla();break;
+                            case R.id.rd_btn2:a.grupSelected=1;
+                                pintarTabla();break;
+                            case R.id.rd_btn3:a.grupSelected=2;
+                                pintarTabla();break;
+                            case R.id.rd_btn4:a.grupSelected=3;
+                                pintarTabla();break;
+                            case R.id.rd_btn5:a.grupSelected=4;
+                                pintarTabla();break;
+                            case R.id.rd_btn6:a.grupSelected=5;
+                                pintarTabla();break;
+                            default:break;
+                        }
+                    }
+                }
+
+
+            }
+        };
+
+        return listener;
+
+    }
+
+    private void pintarTabla() {
+        boolean[][] horesActivas;
+        TextView v;
+        String asignatura;
+        for(int dia=0;dia<5;dia++) {
+            for (int hora = 0; hora < 13; hora++) {
+                v = (TextView)((TableRow)tabla.tabla.getChildAt(hora+1)).getChildAt(dia+1);
+                v.setText("");
+                v.setBackgroundColor(Color.WHITE);
+            }
+        }
+        for(Assignatura a:asignatures){
+            asignatura=a.getName();
+            horesActivas=a.getHorariSelected().getHores();
+            for(int dia=0;dia<5;dia++){
+                for(int hora=0;hora<13;hora++){
+                    if(horesActivas[dia][hora]){
+                        v= (TextView)((TableRow)tabla.tabla.getChildAt(hora+1)).getChildAt(dia+1);
+                        String nom=v.getText().toString();
+                        if(!nom.isEmpty()){
+                            v.setText(nom+"\nVS\n"+asignatura+"\n"+a.getHorariSelected().getGrup());
+                            v.setBackgroundColor(Color.RED);
+                        }else{
+                            v.setBackgroundColor(Color.BLUE);
+                            v.setText(asignatura + "\n" + a.getHorariSelected().getGrup());
+                        }
+                    }
+                }
+            }
+        }
     }
 
 
@@ -231,7 +313,7 @@ public class CreationActivity extends AppCompatActivity {
             {
                 Paint p = new Paint();
                 Rect bounds = new Rect();
-                p.setTextSize(50);
+                p.setTextSize(75);
 
                 p.getTextBounds(texto, 0, texto.length(), bounds);
                 return bounds.width();
