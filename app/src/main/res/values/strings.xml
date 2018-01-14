@@ -32,4 +32,14 @@
     <string name="action_settings">Settings</string>
     <string name="Grup">104</string>
     <string name="triar_grup">Escull un grup per assignatura</string>
+
+    <!-- Strings related to view -->
+    <string name="titol_final">Horari Final UPC</string>
+    <string name="inf_ad">Informació addicional</string>
+    <string name="assignatura">Assignatura</string>
+    <string name="aula">Aula</string>
+    <string name="tipus">Tipus</string>
+    <string name="idioma">Idioma</string>
+    <string name="prof">Professor</string>
+    <string name="codi">Codi</string>
 </resources>

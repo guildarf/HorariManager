@@ -1,6 +1,7 @@
 package montserrat.marcet.horarimanager;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -51,9 +54,18 @@ public class CreationActivity extends AppCompatActivity {
             tabla.agregarFilaTabla(elementos);
         }
 
-
+        Button btn_horari_ok = (Button) findViewById(R.id.btn_acceptar_horari);
+        btn_horari_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CreationActivity.this, ViewActivity.class));
+            }
+        });
 
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)

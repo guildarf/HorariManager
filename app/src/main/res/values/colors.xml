@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="blanco">#FFFFFF</color>
-    <color name="amarillo">#FFFF00</color>
+    <color name="amarillo">#ffff00</color>
     <color name="fuchsia">#FF00FF</color>
     <color name="rojo">#FF0000</color>
     <color name="plata">#C0C0C0</color>
@@ -13,7 +13,7 @@
     <color name="morado">#800080</color>
     <color name="marron">#800000</color>
     <color name="agua">#00FFFF</color>
-    <color name="lima">#00FF00</color>
+    <color name="lima">#fe1bdf1b</color>
     <color name="teal">#008080</color>
     <color name="verde">#008000</color>
     <color name="azul">#0000FF</color>

@@ -25,7 +25,8 @@
         </activity>
         <activity android:name=".ChoiceActivity" />
         <activity android:name=".SubjectsActivity" />
-        <activity android:name=".CreationActivity"></activity>
+        <activity android:name=".CreationActivity" />
+        <activity android:name=".ViewActivity"></activity>
     </application>
 
 </manifest>

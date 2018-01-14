@@ -38,6 +38,7 @@
                 android:id="@+id/btn_acceptar_horari"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/lima"
                 android:text="@string/accepta_horari" />
         </LinearLayout>
 
