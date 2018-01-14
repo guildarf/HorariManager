@@ -45,4 +45,8 @@ class Horari {
     public String getGrup() {
         return grup;
     }
+
+    public boolean[][] getHores() {
+        return horari;
+    }
 }

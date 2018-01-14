@@ -3,7 +3,6 @@ package montserrat.marcet.horarimanager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Assignatura implements Serializable{
 
@@ -60,7 +59,12 @@ public class Assignatura implements Serializable{
     }
 
     public Horari getHorari(int i) {
+        if(grupsHoraris==null||i==-1) return new Horari("100",new boolean[5][13]);
         return grupsHoraris.get(i);
+    }
+
+    public Horari getHorariSelected() {
+        return getHorari(grupSelected);
     }
 }
 

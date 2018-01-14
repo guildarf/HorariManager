@@ -22,8 +22,11 @@ import java.util.zip.Inflater;
 
 public class SelectorGrupAdapter extends ArrayAdapter<Assignatura> {
 
-    public SelectorGrupAdapter(@NonNull Context context, int resource, @NonNull List<Assignatura> objects) {
+    RadioGroup.OnCheckedChangeListener listener;
+
+    public SelectorGrupAdapter(@NonNull Context context, int resource, @NonNull List<Assignatura> objects, RadioGroup.OnCheckedChangeListener listener) {
         super(context, resource, objects);
+        this.listener=listener;
     }
 
     @NonNull
@@ -36,6 +39,7 @@ public class SelectorGrupAdapter extends ArrayAdapter<Assignatura> {
         }
         TextView text=(TextView) result.findViewById(R.id.subject);
         RadioGroup rg= (RadioGroup) result.findViewById(R.id.RG_sbjt1);
+        rg.setOnCheckedChangeListener(listener);
         Assignatura assignatura=getItem(position);
 
         text.setText(assignatura.getName());
@@ -57,4 +61,6 @@ public class SelectorGrupAdapter extends ArrayAdapter<Assignatura> {
 
         return result;
     }
+
+
 }
