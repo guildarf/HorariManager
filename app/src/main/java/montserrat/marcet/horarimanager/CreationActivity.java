@@ -6,9 +6,12 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -16,23 +19,23 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class CreationActivity extends AppCompatActivity {
-
+        private final int MAX_ASSIGNATURES=10;
+        private final int MAX_SUBGRUPS=6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation);
 
-        TextView Subject1 = (TextView) findViewById(R.id.Subject1);
-        Subject1.setText("PAM");
-        TextView Subject2 = (TextView) findViewById(R.id.Subject2);
-        Subject2.setText("CGRM");
-        TextView Subject3 = (TextView) findViewById(R.id.Subject3);
-        Subject3.setText("IE");
-        TextView Subject4 = (TextView) findViewById(R.id.Subject4);
-        Subject4.setText("MOP");
-        TextView Subject5 = (TextView) findViewById(R.id.Subject5);
-        Subject5.setText("VE");
+        ArrayList<Assignatura> asignatures=(ArrayList<Assignatura>) getIntent().getSerializableExtra(SubjectsActivity.ID_ASIGNSELECT);
+        asignatures.get(0).addHorari(new Horari("101",Horari.DILLUNS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
+        asignatures.get(0).addHorari(new Horari("101",Horari.DIJOUS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
 
+        asignatures.get(1).addHorari(new Horari("101",Horari.DIMARTS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
+        asignatures.get(1).addHorari(new Horari("101",Horari.DIJOUS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
+
+        ListView list=(ListView)findViewById(R.id.asignaturas);
+        SelectorGrupAdapter adapter=new SelectorGrupAdapter(this,R.layout.list_item_activity_creation,asignatures);
+        list.setAdapter(adapter);
 
 
 
