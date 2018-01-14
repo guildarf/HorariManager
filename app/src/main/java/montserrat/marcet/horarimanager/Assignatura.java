@@ -1,6 +1,10 @@
 package montserrat.marcet.horarimanager;
 
-public class Assignatura {
+import java.io.Serializable;
+
+public class Assignatura implements Serializable{
+
+
 
     String name;
     boolean checked;

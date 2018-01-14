@@ -23,6 +23,7 @@ class PlaDocent {
         quatris= resources.getStringArray(R.array.llista_quatrimestres);
         plaDocent=new HashMap<>();
         //TODO que funcione aunque cambie el orden de los grados
+        //TODO que recoja las asignaturas completas(con su horario y subgrupos) para pasarlo a la next activity
         plaDocent.put(graus[0],grau2Map(resources.getStringArray(R.array.electronica)));
         plaDocent.put(graus[1],grau2Map(resources.getStringArray(R.array.electrica)));
         plaDocent.put(graus[2],grau2Map(resources.getStringArray(R.array.mecanica)));

@@ -13,22 +13,27 @@ import android.widget.ExpandableListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class SubjectsActivity extends AppCompatActivity {
 
+    public static final String ID_ASIGNSELECT = "hola";
     PlaDocent plaDocent;
     Spinner sp_graus;
     String [] graus;
     List<String> quatrimestres;
     HashMap<String,List<Assignatura>> assignatures;//Mapa d'assignatures per quatrimestres es sobreescriu cada cop que es canvia de grau
-    Map<String,String[]> rawData;
     ExpandableListView subjectList;
     MyExpandableListAdapter subjectadapter;
+    List<Assignatura> asignSelec;
+    int numSelect=0;
+    Button neteja;
 
 
     @Override
@@ -57,7 +62,9 @@ public class SubjectsActivity extends AppCompatActivity {
                 if (mEdit.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(),R.string.falta_nom, Toast.LENGTH_SHORT).show();
                 }else {
-                    startActivity(new Intent(SubjectsActivity.this, CreationActivity.class));
+                    Intent i=new Intent(SubjectsActivity.this, CreationActivity.class);
+                    i.putExtra(ID_ASIGNSELECT, (Serializable) asignSelec);
+                    startActivity(i);
                 }
 
             }
@@ -82,6 +89,9 @@ public class SubjectsActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        asignSelec=new ArrayList<>();
+
+        neteja=(Button)findViewById(R.id.btn_cleaner);
 
         plaDocent=new PlaDocent(getResources());
 
@@ -102,10 +112,12 @@ public class SubjectsActivity extends AppCompatActivity {
         subjectList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPos, int childPos, long l) {
-
-                ((Assignatura)subjectadapter.getChild(groupPos,childPos)).toggleChecked();
+                Assignatura selected=((Assignatura)subjectadapter.getChild(groupPos,childPos));
+                selected.toggleChecked();
                 subjectadapter.notifyDataSetChanged();
-
+                numSelect++;
+                neteja.setText("Neteja ("+numSelect+")");
+                asignSelec.add(selected);
                 return false;
             }
         });
@@ -118,13 +130,13 @@ public class SubjectsActivity extends AppCompatActivity {
 
 
         if(grau==-1) {
-            for(String q:quatrimestres){
-                assignatures.put(q,new ArrayList<Assignatura>());
+            for(String q:quatrimestres) {
+                assignatures.put(q, new ArrayList<Assignatura>());
             }
-            return;
         }
-
-        assignatures.putAll(plaDocent.getAssignaturesGrau(graus[grau]));
+        else{
+            assignatures.putAll(plaDocent.getAssignaturesGrau(graus[grau]));
+        }
 
 
         subjectadapter.notifyDataSetChanged();
@@ -137,4 +149,15 @@ public class SubjectsActivity extends AppCompatActivity {
 
     }
 
+    public void onClickNeteja(View view) {
+
+        numSelect=0;
+        for(Assignatura a:asignSelec){
+            a.setChecked(false);
+        }
+        subjectadapter.notifyDataSetChanged();
+        asignSelec.clear();
+        neteja.setText("Neteja");
+
+    }
 }
