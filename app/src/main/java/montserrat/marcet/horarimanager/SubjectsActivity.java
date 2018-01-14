@@ -21,6 +21,7 @@ import java.util.Map;
 
 public class SubjectsActivity extends AppCompatActivity {
 
+    PlaDocent plaDocent;
     Spinner sp_graus;
     String [] graus;
     List<String> quatrimestres;
@@ -82,28 +83,19 @@ public class SubjectsActivity extends AppCompatActivity {
 
     private void initData() {
 
-        graus = getResources().getStringArray(R.array.llista_graus);
+        plaDocent=new PlaDocent(getResources());
+
+        graus = plaDocent.getGraus();
 
         sp_graus = (Spinner) findViewById(R.id.sp_graus);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(),android.R.layout.simple_spinner_item,graus);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_spinner_item,graus);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_graus.setAdapter(adapter);
 
 
-        quatrimestres=Arrays.asList(getResources().getStringArray(R.array.llista_quatrimestres));
+        quatrimestres=Arrays.asList(plaDocent.getQuatris());
 
         assignatures=new HashMap<>();
-
-        //TODO hacer que esto funcione siempre aunque cambien las carreras
-        rawData=new HashMap<>();
-
-        rawData.put(graus[0],getResources().getStringArray(R.array.electronica));
-        rawData.put(graus[1],getResources().getStringArray(R.array.electrica));
-        rawData.put(graus[2],getResources().getStringArray(R.array.mecanica));
-        rawData.put(graus[3],getResources().getStringArray(R.array.quimica));
-        rawData.put(graus[4],getResources().getStringArray(R.array.textil));
-        rawData.put(graus[5],getResources().getStringArray(R.array.disseny));
-
 
         subjectList=(ExpandableListView)findViewById(R.id.subject_list);
         subjectadapter = new MyExpandableListAdapter(this,quatrimestres,assignatures);
@@ -125,31 +117,18 @@ public class SubjectsActivity extends AppCompatActivity {
     private void omplirData(int grau) {
 
 
-        if(grau==-1){
-
-            for(String s:quatrimestres) {
-                List sis=new ArrayList<Assignatura>();
-                sis.add(new Assignatura(s));
-                assignatures.put(s,sis);
+        if(grau==-1) {
+            for(String q:quatrimestres){
+                assignatures.put(q,new ArrayList<Assignatura>());
             }
+            return;
         }
-        else{
-            String [] asi=rawData.get(graus[grau]);
-            int i=0;
-            for(String s:quatrimestres) {
-                String [] noms=asi[i].split(";");
-                List<Assignatura> sis=new ArrayList<>();
 
-                for (String nom :noms) {
-                    sis.add(new Assignatura(nom));
-                }
+        assignatures.putAll(plaDocent.getAssignaturesGrau(graus[grau]));
 
 
-                assignatures.put(s,sis);
-                i++;
-            }
-            subjectadapter.notifyDataSetChanged();
-        }
+        subjectadapter.notifyDataSetChanged();
+
         for (int i=0;i<quatrimestres.size();i++){
 
             if(subjectList.isGroupExpanded(i))subjectList.collapseGroup(i);
