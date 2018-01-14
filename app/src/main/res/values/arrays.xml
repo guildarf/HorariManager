@@ -20,6 +20,16 @@
         <item>Q7</item>
         <item>Q8</item>
     </string-array>
+    <!--Array amb els valors dels dies de la setmana-->
+    <string-array name="cabecera_tabla">
+        <item>Hores</item>
+        <item>Dl</item>
+        <item>Dm</item>
+        <item>Dx</item>
+        <item>Dj</item>
+        <item>Dv</item>
+    </string-array>
+
 
     <string-array name="electronica">
         <item>e11;e12;e13;e14;e15</item>

@@ -28,4 +28,8 @@
 
 
     <!-- Strings related to creation -->
+    <string name="titol">Previsualització Horari UPC</string>
+    <string name="action_settings">Settings</string>
+    <string name="Grup">104</string>
+    <string name="triar_grup">Escull un grup per assignatura</string>
 </resources>
