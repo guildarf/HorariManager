@@ -22,34 +22,39 @@ import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CreationActivity extends AppCompatActivity {
-        private final int MAX_ASSIGNATURES=10;
-        private final int MAX_SUBGRUPS=6;
-        ArrayList<Assignatura> asignatures;
-        String[][] horari=new String[5][13];
-    private Tabla tabla;
+
+        ArrayList<Assignattura> asignatures;
+        boolean solapament;
+        private Tabla tabla;
+        String nomHorari;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation);
+        nomHorari=getIntent().getStringExtra(SubjectsActivity.HORARI_NOM);
+        asignatures=(ArrayList<Assignattura>) getIntent().getSerializableExtra(SubjectsActivity.ID_ASIGNSELECT);
+        Classe c1=new Classe(0,0,2);
+        Classe c2=new Classe(1,0,2);
+        Classe c3=new Classe(2,0,2);
+        Classe c4=new Classe(2,1,3);
 
-        asignatures=(ArrayList<Assignatura>) getIntent().getSerializableExtra(SubjectsActivity.ID_ASIGNSELECT);
-        asignatures.get(0).addHorari(new Horari("101",Horari.DILLUNS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
-        asignatures.get(0).addHorari(new Horari("102",Horari.DIJOUS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
-
-        asignatures.get(1).addHorari(new Horari("101",Horari.DIMARTS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
-        asignatures.get(1).addHorari(new Horari("102",Horari.DIJOUS,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
-
-       // asignatures.get(2).addHorari(new Horari("101",Horari.DIMECRES,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
-
-       // asignatures.get(3).addHorari(new Horari("101",Horari.DIVENDRES,new int[]{Horari.FROM8_9,Horari.FROM9_10,Horari.FROM10_11}));
+        asignatures.get(0).addGrupo(new Grups("101",c1));
+        asignatures.get(0).addGrupo(new Grups("102",c2));
+        asignatures.get(1).addGrupo(new Grups("101",c3));
+        asignatures.get(2).addGrupo(new Grups("101",c4));
 
         ListView list=(ListView)findViewById(R.id.asignaturas);
         SelectorGrupAdapter adapter=new SelectorGrupAdapter(this,R.layout.list_item_activity_creation,asignatures,createListener());
@@ -62,11 +67,11 @@ public class CreationActivity extends AppCompatActivity {
         {
             ArrayList<String> elementos = new ArrayList<String>();
             elementos.add((i+8)+"-" + (i+9) );
-            elementos.add("Casilla [" + i + ", 0]");
-            elementos.add("Casilla [" + i + ", 1]");
-            elementos.add("Casilla [" + i + ", 2]");
-            elementos.add("Casilla [" + i + ", 3]");
-            elementos.add("Casilla [" + i + ", 4]");
+            elementos.add(",                ,");
+            elementos.add(",                ,");
+            elementos.add(",                ,");
+            elementos.add(",                ,");
+            elementos.add(",                ,");
             tabla.agregarFilaTabla(elementos);
         }
 
@@ -74,10 +79,41 @@ public class CreationActivity extends AppCompatActivity {
         btn_horari_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CreationActivity.this, ViewActivity.class));
+                if(!solapament){
+                    guardarDades();
+                    startActivity(new Intent(CreationActivity.this, ViewActivity.class));
+                }else{
+                    Toast.makeText(getApplicationContext(),"Siusplau,soluciona els solapaments abans de continuar", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
+
+    private void guardarDades() {
+        FileOutputStream fos = null;
+        ObjectOutputStream oos;
+        try {
+            fos = new FileOutputStream(nomHorari+".tmp");
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(generaArxiuGuardat());
+            oos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private Classe[][] generaArxiuGuardat() {
+
+
+
+
+        return  null;
+    }
+
 
     private RadioGroup.OnCheckedChangeListener createListener() {
 
@@ -86,20 +122,20 @@ public class CreationActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if(i==-1)return;
                 TextView tv=(TextView)((View)radioGroup.getParent()).findViewById(R.id.subject);
-                for(Assignatura a:asignatures){
-                    if(a.getName().equals(tv.getText())){
+                for(Assignattura a:asignatures){
+                    if(a.getNom().equals(tv.getText())){
                         switch (i){
-                            case R.id.rd_btn1:a.grupSelected=0;
+                            case R.id.rd_btn1:a.setGrupoElegido(0);
                                 pintarTabla();break;
-                            case R.id.rd_btn2:a.grupSelected=1;
+                            case R.id.rd_btn2:a.setGrupoElegido(1);
                                 pintarTabla();break;
-                            case R.id.rd_btn3:a.grupSelected=2;
+                            case R.id.rd_btn3:a.setGrupoElegido(2);
                                 pintarTabla();break;
-                            case R.id.rd_btn4:a.grupSelected=3;
+                            case R.id.rd_btn4:a.setGrupoElegido(3);
                                 pintarTabla();break;
-                            case R.id.rd_btn5:a.grupSelected=4;
+                            case R.id.rd_btn5:a.setGrupoElegido(4);
                                 pintarTabla();break;
-                            case R.id.rd_btn6:a.grupSelected=5;
+                            case R.id.rd_btn6:a.setGrupoElegido(5);
                                 pintarTabla();break;
                             default:break;
                         }
@@ -115,33 +151,37 @@ public class CreationActivity extends AppCompatActivity {
     }
 
     private void pintarTabla() {
-        boolean[][] horesActivas;
+        List<Classe> classes;
         TextView v;
-        String asignatura;
+
         for(int dia=0;dia<5;dia++) {
             for (int hora = 0; hora < 13; hora++) {
-                v = (TextView)((TableRow)tabla.tabla.getChildAt(hora+1)).getChildAt(dia+1);
+                v = (tabla.get(hora+1,dia+1));
                 v.setText("");
                 v.setBackgroundColor(Color.WHITE);
             }
         }
-        for(Assignatura a:asignatures){
-            asignatura=a.getName();
-            horesActivas=a.getHorariSelected().getHores();
-            for(int dia=0;dia<5;dia++){
-                for(int hora=0;hora<13;hora++){
-                    if(horesActivas[dia][hora]){
-                        v= (TextView)((TableRow)tabla.tabla.getChildAt(hora+1)).getChildAt(dia+1);
-                        String nom=v.getText().toString();
-                        if(!nom.isEmpty()){
-                            v.setText(nom+"\nVS\n"+asignatura+"\n"+a.getHorariSelected().getGrup());
+        solapament=false;
+        for(Assignattura a:asignatures) {
+            Log.v("HH", "JJ");
+            if (a.getGrupoElegido() != null) {
+                classes = a.getGrupoElegido().getClasses();
+                for (Classe c : classes) {
+                    for (int hora = c.getHoraInici(); hora < c.getHoraFin(); hora++) {
+                        v = tabla.get(hora + 1, c.getDia() + 1);
+                        String nom = v.getText().toString();
+                        if (!nom.isEmpty()) {
+                            v.setText(nom + "\nVS\n" + a.getNom() + "\n" + a.getGrupoElegido().getNom());
                             v.setBackgroundColor(Color.RED);
-                        }else{
+                            solapament = true;
+                        } else {
                             v.setBackgroundColor(Color.BLUE);
-                            v.setText(asignatura + "\n" + a.getHorariSelected().getGrup());
+                            v.setText(a.getNom() + "\n" + a.getGrupoElegido().getNom());
                         }
+
                     }
                 }
+
             }
         }
     }
@@ -318,7 +358,12 @@ public class CreationActivity extends AppCompatActivity {
                 p.getTextBounds(texto, 0, texto.length(), bounds);
                 return bounds.width();
             }
+
+        public TextView get(int fila, int columna) {
+                return (TextView)filas.get(fila).getChildAt(columna);
+
         }
+    }
     }
 
 

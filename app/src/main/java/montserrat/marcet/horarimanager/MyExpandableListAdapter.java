@@ -19,9 +19,9 @@ import java.util.List;
 public class MyExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> listDataHeader;
-    private HashMap<String,List<Assignatura>> listHashMap;
+    private HashMap<String,List<AssignaturaCheckbox>> listHashMap;
 
-    public MyExpandableListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<Assignatura>> listHashMap) {
+    public MyExpandableListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<AssignaturaCheckbox>> listHashMap) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listHashMap = listHashMap;
@@ -78,7 +78,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
-        final Assignatura child = (Assignatura) getChild(i,i1);
+        final AssignaturaCheckbox child = (AssignaturaCheckbox) getChild(i,i1);
         if(view == null)
         {
             LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -86,7 +86,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         CheckBox listChild = (CheckBox) view.findViewById(R.id.lblListItem);
-        listChild.setText(child.getName());
+        listChild.setText(child.getNom());
         listChild.setChecked(child.isChecked());
 
         return view;

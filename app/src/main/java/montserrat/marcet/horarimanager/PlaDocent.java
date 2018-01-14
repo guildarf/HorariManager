@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 class PlaDocent {
     String[] graus;
     String[] quatris;
-    Map<String,Map<String,List<Assignatura>>> plaDocent; //primer string grau, segon string quatri
+    Map<String,Map<String,List<Assignattura>>> plaDocent; //primer string grau, segon string quatri
 
     public PlaDocent(Resources resources) {
         graus=resources.getStringArray(R.array.llista_graus);
@@ -36,7 +36,7 @@ class PlaDocent {
 
     }
 
-    private Map<String,List<Assignatura>> grau2Map(String[] stringArray) {
+    private Map<String,List<Assignattura>> grau2Map(String[] stringArray) {
         HashMap map=new HashMap();
         for (int i=0;i<quatris.length;i++) {
             map.put(quatris[i],quatri2List(stringArray[i]));
@@ -46,11 +46,11 @@ class PlaDocent {
 
     }
 
-    private List<Assignatura> quatri2List(String sSplit) {
+    private List<Assignattura> quatri2List(String sSplit) {
         List asignaturas=new ArrayList();
 
         for(String s:sSplit.split(";")){
-            asignaturas.add(new Assignatura(s));
+            asignaturas.add(new Assignattura(s));
         }
 
         return asignaturas;
@@ -66,11 +66,11 @@ class PlaDocent {
         return quatris;
     }
 
-    public Map<String, Map<String, List<Assignatura>>> getPlaDocent() {
+    public Map<String, Map<String, List<Assignattura>>> getPlaDocent() {
         return plaDocent;
     }
 
-    public Map<String,List<Assignatura>> getAssignaturesGrau(String grau) {
+    public Map<String,List<Assignattura>> getAssignaturesGrau(String grau) {
 
         return plaDocent.get(grau);
 

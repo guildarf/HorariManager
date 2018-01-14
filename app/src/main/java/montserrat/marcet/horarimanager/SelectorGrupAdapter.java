@@ -20,11 +20,11 @@ import java.util.zip.Inflater;
  * Created by sakum on 14/01/2018.
  */
 
-public class SelectorGrupAdapter extends ArrayAdapter<Assignatura> {
+public class SelectorGrupAdapter extends ArrayAdapter<Assignattura> {
 
     RadioGroup.OnCheckedChangeListener listener;
 
-    public SelectorGrupAdapter(@NonNull Context context, int resource, @NonNull List<Assignatura> objects, RadioGroup.OnCheckedChangeListener listener) {
+    public SelectorGrupAdapter(@NonNull Context context, int resource, @NonNull List<Assignattura> objects, RadioGroup.OnCheckedChangeListener listener) {
         super(context, resource, objects);
         this.listener=listener;
     }
@@ -40,15 +40,15 @@ public class SelectorGrupAdapter extends ArrayAdapter<Assignatura> {
         TextView text=(TextView) result.findViewById(R.id.subject);
         RadioGroup rg= (RadioGroup) result.findViewById(R.id.RG_sbjt1);
         rg.setOnCheckedChangeListener(listener);
-        Assignatura assignatura=getItem(position);
+        Assignattura assignatura=getItem(position);
 
-        text.setText(assignatura.getName());
+        text.setText(assignatura.getNom());
 
         for (int i=0;i<rg.getChildCount();i++){
             RadioButton rb=(RadioButton)rg.getChildAt(i);
-            if(i<assignatura.getHorarisCount()){
-                rb.setText(assignatura.getHorari(i).getGrup());
-            } else if(assignatura.getHorarisCount()==-1&&i==0) {
+            if(i<assignatura.getGrups().size()){
+                rb.setText(assignatura.getGrups().get(i).getNom());
+            } else if(assignatura.getGrups().size()==-1&&i==0) {
                 rb.setText("Horari unic");
                 rb.setChecked(true);
             }
@@ -57,7 +57,8 @@ public class SelectorGrupAdapter extends ArrayAdapter<Assignatura> {
             }
 
         }
-        rg.check(getItem(position).getSelGroup());
+        Assignattura a=getItem(position);
+        rg.check(a.getGrups().indexOf(a.getGrupoElegido()));
 
         return result;
     }

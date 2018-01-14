@@ -24,14 +24,15 @@ import java.util.Map;
 public class SubjectsActivity extends AppCompatActivity {
 
     public static final String ID_ASIGNSELECT = "hola";
+    public static final String HORARI_NOM = "horari_nom";
     PlaDocent plaDocent;
     Spinner sp_graus;
     String [] graus;
     List<String> quatrimestres;
-    HashMap<String,List<Assignatura>> assignatures;//Mapa d'assignatures per quatrimestres es sobreescriu cada cop que es canvia de grau
+    HashMap<String,List<AssignaturaCheckbox>> assignatures;//Mapa d'assignatures per quatrimestres es sobreescriu cada cop que es canvia de grau
     ExpandableListView subjectList;
     MyExpandableListAdapter subjectadapter;
-    List<Assignatura> asignSelec;
+    List<Assignattura> asignSelec;
     int numSelect=0;
     Button neteja;
 
@@ -64,6 +65,7 @@ public class SubjectsActivity extends AppCompatActivity {
                 }else {
                     Intent i=new Intent(SubjectsActivity.this, CreationActivity.class);
                     i.putExtra(ID_ASIGNSELECT, (Serializable) asignSelec);
+                    i.putExtra(HORARI_NOM,mEdit.getText());
                     startActivity(i);
                 }
 
@@ -112,7 +114,7 @@ public class SubjectsActivity extends AppCompatActivity {
         subjectList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPos, int childPos, long l) {
-                Assignatura selected=((Assignatura)subjectadapter.getChild(groupPos,childPos));
+                AssignaturaCheckbox selected=((AssignaturaCheckbox)subjectadapter.getChild(groupPos,childPos));
                 selected.toggleChecked();
                 subjectadapter.notifyDataSetChanged();
                 if(asignSelec.contains(selected)){
@@ -140,11 +142,20 @@ public class SubjectsActivity extends AppCompatActivity {
 
         if(grau==-1) {
             for(String q:quatrimestres) {
-                assignatures.put(q, new ArrayList<Assignatura>());
+                assignatures.put(q, new ArrayList<AssignaturaCheckbox>());
             }
         }
         else{
-            assignatures.putAll(plaDocent.getAssignaturesGrau(graus[grau]));
+            Map<String,List<Assignattura>> m=plaDocent.getAssignaturesGrau(graus[grau]);
+
+            for(String s:quatrimestres){
+                List<Assignattura> l=m.get(s);
+                List ll=new ArrayList();
+                for(Assignattura a:l){
+                    ll.add(new AssignaturaCheckbox(a));
+                }
+                assignatures.put(s,ll);
+            }
         }
 
 
@@ -161,12 +172,37 @@ public class SubjectsActivity extends AppCompatActivity {
     public void onClickNeteja(View view) {
 
         numSelect=0;
-        for(Assignatura a:asignSelec){
-            a.setChecked(false);
+        for(Assignattura a:asignSelec){
+            ((AssignaturaCheckbox)a).setChecked(false);
         }
         subjectadapter.notifyDataSetChanged();
         asignSelec.clear();
         neteja.setText("Neteja");
 
+    }
+}
+
+class AssignaturaCheckbox extends Assignattura{
+    boolean isChecked;
+
+    public AssignaturaCheckbox(String codi, String nom, String idioma) {
+        super(codi, nom, idioma);
+        this.isChecked = false;
+    }
+
+    public AssignaturaCheckbox(Assignattura a) {
+        super(a.getCodi(), a.getNom(), a.getIdioma());
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public void toggleChecked() {
+        isChecked=!isChecked;
     }
 }
