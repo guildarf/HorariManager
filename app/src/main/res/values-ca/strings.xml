@@ -46,4 +46,9 @@
     <string name="triar_grup">Escull grup per cada assignatura</string>
     <string name="NoHorarisSeleccionats">No hi ha cap horari guardat</string>
     <string name="confirm">Confirmar</string>
+    <string name="confirmDeleteMessage">Segur que vols borrar l\'horari %s?</string>
+    <string name="welcoming">Benvingut a HorariManager</string>
+    <string name="falta_contra">Falta afegir una contrassenya</string>
+    <string name="falta_correu">Falta afegir un correu electrònic</string>
+    <string name="falta_correu_i_contra">"Falta afegir un correu i una contrassenya "</string>
 </resources>

@@ -46,5 +46,10 @@
     <string name="EE">Electrical Engineering</string>
     <string name="EDDP">Industrial Design and Product Development Engineering</string>
     <string name="NoHorarisSeleccionats">No hi ha cap horari guardat</string>
-    <string name="confirm">Confirmar</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirmDeleteMessage">Are you sure you want to delete this schedule %s?</string>
+    <string name="welcoming">Welcome to HorariManager</string>
+    <string name="falta_contra">A password must be written</string>
+    <string name="falta_correu">An email must be written</string>
+    <string name="falta_correu_i_contra">E-mail and password  must be written</string>
 </resources>

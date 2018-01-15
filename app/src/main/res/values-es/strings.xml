@@ -46,4 +46,9 @@
     <string name="EEIA">Ingeniería Electrónica Industrial i Automática</string>
     <string name="NoHorarisSeleccionats">No hi ha cap horari guardat</string>
     <string name="confirm">Confirmar</string>
+    <string name="confirmDeleteMessage">Seguro que desea eliminar el horario %s ?</string>
+    <string name="welcoming">Bienvenido a HorariManager</string>
+    <string name="falta_contra">Debe añadir una contrasenya</string>
+    <string name="falta_correu">Debe añadir un correo electrónico</string>
+    <string name="falta_correu_i_contra">Debe añadir un correo y una contraseña</string>
 </resources>

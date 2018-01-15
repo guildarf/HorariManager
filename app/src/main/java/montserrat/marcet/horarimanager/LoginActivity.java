@@ -1,22 +1,20 @@
 package montserrat.marcet.horarimanager;
 
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -130,28 +128,38 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+        boolean email_buit = email.equals("");
+        boolean pass_buida = password.equals("");
+        if(email_buit && pass_buida) Toast.makeText(LoginActivity.this, R.string.falta_correu_i_contra, Toast.LENGTH_SHORT).show();
+        else if (email_buit )Toast.makeText(LoginActivity.this, R.string.falta_correu, Toast.LENGTH_SHORT).show();
+        else if (pass_buida)Toast.makeText(LoginActivity.this, R.string.falta_contra, Toast.LENGTH_SHORT).show();
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(LoginActivity.this, R.string.auth_failed,
-                                    Toast.LENGTH_SHORT).show();
-                        }else{
-                            Intent ActivityChoice = new Intent(getApplicationContext(), ChoiceActivity.class);
-                            startActivity(ActivityChoice);
+        if (!email_buit && !pass_buida){
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+
+                            // If sign in fails, display a message to the user. If sign in succeeds
+                            // the auth state listener will be notified and logic to handle the
+                            // signed in user can be handled in the listener.
+                            if (!task.isSuccessful()) {
+                                Log.w(TAG, "signInWithEmail:failed", task.getException());
+                                Toast.makeText(LoginActivity.this, R.string.auth_failed,
+                                        Toast.LENGTH_SHORT).show();
+                            }else{
+                                Intent ActivityChoice = new Intent(getApplicationContext(), ChoiceActivity.class);
+                                startActivity(ActivityChoice);
+                            }
+
+                            // ...
                         }
+                    });
+            return true;
+        }
 
-                        // ...
-                    }
-                });
-        return true;
+        return false;
     }
 
 
