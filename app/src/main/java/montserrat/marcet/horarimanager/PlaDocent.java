@@ -3,11 +3,11 @@ package montserrat.marcet.horarimanager;
 import android.content.res.Resources;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
+
+import montserrat.marcet.horarimanager.Objectes.Assignatura;
 
 /**
  * Created by sakum on 14/01/2018.

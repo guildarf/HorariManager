@@ -9,10 +9,10 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 import java.util.List;
+
+import montserrat.marcet.horarimanager.Objectes.Assignatura;
 
 /**
  * Created by reale on 21/11/2016.
