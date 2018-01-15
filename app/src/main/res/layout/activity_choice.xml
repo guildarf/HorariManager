@@ -7,12 +7,12 @@
     tools:context="montserrat.marcet.horarimanager.ChoiceActivity">
 
     <Button
+        android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tanca Sessió"
-        android:id="@+id/logout"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:text="@string/tanca_sessio" />
 
     <Button
         android:id="@+id/btn_crear_horari"

@@ -2,14 +2,14 @@
     <string name="app_name">HorariManager</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Contrasenya</string>
+    <string name="prompt_email">Correu Electrònic</string>
+    <string name="prompt_password">Contrassenya</string>
     <string name="action_sign_in">Inicia Sessió</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="action_sign_in_short">Inicia Sessió</string>
+    <string name="error_invalid_email">Aquest correu electrònic és incorrecte</string>
+    <string name="error_invalid_password">Aquesta contrasenya és massa curta</string>
+    <string name="error_incorrect_password">La contrasenya no és correcta</string>
+    <string name="error_field_required">Es requereix aquest camp</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
@@ -22,16 +22,31 @@
     <!-- Strings related to subjects -->
     <string name="btn_validate">Valida</string>
     <string name="btn_cleaner">Neteja</string>
-    <string name="anomena_horari">Anomena horari</string>
+    <string name="anomena_horari">Anomena l\'horari</string>
     <string name="accepta_horari">Accepta</string>
     <string name="falta_nom">Anomena abans el teu horari</string>
+    <string name="assig_triada">Has triat</string>
+    <string name="tria_grau">Escull un grau</string>
+    <string name="EEIA">Enginyeria Electrònica Industrial i Automàtica</string>
+    <string name="EE">Enginyeria Elèctrica</string>
+    <string name="EM">Enginyeria Mecànica</string>
+    <string name="EQ">Enginyeria Química</string>
+    <string name="ET">Enginyeria Tèxtil</string>
+    <string name="EDDP">Enginyeria Disseny i desenvolupament del producte</string>
+
 
 
     <!-- Strings related to creation -->
     <string name="titol">Previsualització Horari UPC</string>
-    <string name="action_settings">Settings</string>
-    <string name="Grup">104</string>
-    <string name="triar_grup">Escull un grup per assignatura</string>
+    <string name="action_settings">Ajustos</string>
+    <string name="Grup" translatable="false">104</string>
+    <string name="triar_grup">Escull grup per cada assignatura</string>
+    <string name="hores">Hores</string>
+    <string name="dl">Dilluns</string>
+    <string name="dm">Dimarts</string>
+    <string name="dx">Dimecres</string>
+    <string name="dj">Dijous</string>
+    <string name="dv">Divendres</string>
 
     <!-- Strings related to view -->
     <string name="titol_final">Horari Final UPC</string>
@@ -42,4 +57,5 @@
     <string name="idioma">Idioma</string>
     <string name="prof">Professor</string>
     <string name="codi">Codi</string>
+    <string name="tanca_sessio">Tanca Sessió</string>
 </resources>

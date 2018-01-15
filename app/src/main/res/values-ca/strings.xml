@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HorariManager</string>
+    <string name="EDDP">Enginyeria Disseny i desenvolupament del producte</string>
+    <string name="EE">Enginyeria Elèctrica</string>
+    <string name="EEIA">Enginyeria Electrònica Industrial i Automàtica</string>
+    <string name="EM">Enginyeria Mecànica</string>
+    <string name="EQ">Enginyeria Química</string>
+    <string name="ET">Enginyeria Tèxtil</string>
+    <string name="accepta_horari">Accepta</string>
+    <string name="action_settings">Ajustos</string>
+    <string name="action_sign_in">Inicia Sessió</string>
+    <string name="action_sign_in_short">Inicia Sessió</string>
+    <string name="anomena_horari">Anomena l\'horari</string>
+    <string name="assig_triada">Has triat</string>
+    <string name="assignatura">Assignatura</string>
+    <string name="aula">Aula</string>
+    <string name="auth_failed">Ha fallat l\'autentificació</string>
+    <string name="btn_cleaner">Neteja</string>
+    <string name="btn_st_crear">Crea nou horari</string>
+    <string name="btn_validate">Valida</string>
+    <string name="chose_horari">Carrega un horari</string>
+    <string name="codi">Codi</string>
+    <string name="dj">Dijous</string>
+    <string name="dl">Dilluns</string>
+    <string name="dm">Dimarts</string>
+    <string name="dv">Divendres</string>
+    <string name="dx">Dimecres</string>
+    <string name="error_field_required">Es requereix aquest camp</string>
+    <string name="error_incorrect_password">La contrasenya no és correcta</string>
+    <string name="error_invalid_email">Aquest correu electrònic és incorrecte</string>
+    <string name="error_invalid_password">Aquesta contrasenya és massa curta</string>
+    <string name="falta_nom">Anomena abans el teu horari</string>
+    <string name="hores">Hores</string>
+    <string name="idioma">Idioma</string>
+    <string name="inf_ad">Informació addicional</string>
+    <string name="permission_rationale">\"Contacts permissions are needed for providing email</string>
+    <string name="prof">Professor</string>
+    <string name="prompt_email">Correu Electrònic</string>
+    <string name="prompt_password">Contrassenya</string>
+    <string name="tanca_sessio">Tanca Sessió</string>
+    <string name="tipus">Tipus</string>
+    <string name="titol">Previsualització Horari UPC</string>
+    <string name="titol_final">Horari Final UPC</string>
+    <string name="tria_grau">Escull un grau</string>
+    <string name="triar_grup">Escull grup per cada assignatura</string>
+</resources>

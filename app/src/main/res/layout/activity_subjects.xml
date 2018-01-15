@@ -37,7 +37,7 @@
 
     <EditText
         android:id="@+id/id_anomena_horai"
-        android:layout_width="150sp"
+        android:layout_width="162sp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btn_cleaner"
         android:layout_centerHorizontal="true"
@@ -47,7 +47,7 @@
         android:maxLength="12"
         android:maxLines="1"
         android:selectAllOnFocus="false"
-        android:windowSoftInputMode="stateHidden|adjustPan"/>
+        android:windowSoftInputMode="stateHidden|adjustPan" />
 
     <ExpandableListView
         android:id="@+id/subject_list"

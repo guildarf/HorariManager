@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HorariManager</string>
+    <string name="assig_triada">Has escogido</string>
+    <string name="assignatura">Asignatura</string>
+    <string name="aula">Aula</string>
+    <string name="auth_failed">Ha fallado la autentificación</string>
+    <string name="btn_cleaner">Limpia</string>
+    <string name="btn_st_crear">Crear nuevo horario</string>
+    <string name="btn_validate">Validar</string>
+    <string name="chose_horari">Cargar un horario</string>
+    <string name="codi">Código</string>
+    <string name="error_field_required">Se requiere este campo</string>
+    <string name="error_incorrect_password">La contraseña no es correcta</string>
+    <string name="error_invalid_email">Este correo electrónico es incorrecto</string>
+    <string name="error_invalid_password">Esta contraseña es demasiado corta</string>
+    <string name="falta_nom">Debes nombar antes tu horario</string>
+    <string name="idioma">Idioma</string>
+    <string name="inf_ad">Información adicional</string>
+    <string name="prof">Profesor</string>
+    <string name="prompt_email">Correo Electrónico</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="tanca_sessio">Cerrar Sesión</string>
+    <string name="tipus">Tipo</string>
+    <string name="titol">Previsualización Horario UPC</string>
+    <string name="titol_final">Horario Final UPC</string>
+    <string name="tria_grau">Escoge un grado</string>
+    <string name="triar_grup">Escoge grupo para cada asignatura</string>
+    <string name="permission_rationale">"\"Contacts permissions are needed for providing email         completions.\"     "</string>
+    <string name="accepta_horari">Aceptar</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="action_sign_in">Iniciar Sesión</string>
+    <string name="action_sign_in_short">Iniciar Sesión</string>
+    <string name="anomena_horari">Nombra el horario</string>
+    <string name="hores">Horas</string>
+    <string name="dj">Juves</string>
+    <string name="dl">Lunes</string>
+    <string name="dm">Martes</string>
+    <string name="dv">Viernes</string>
+    <string name="dx">Miércoles</string>
+    <string name="EDDP">Ingeniería Diseño y desarrollo del producto</string>
+    <string name="EE">Ingeniería Eléctrica</string>
+    <string name="EM">Ingeniería Mecánica</string>
+    <string name="EQ">Ingeniería Química</string>
+    <string name="ET">Ingeniería Téxtil</string>
+    <string name="EEIA">Ingeniería Electrónica Industrial i Automática</string>
+</resources>

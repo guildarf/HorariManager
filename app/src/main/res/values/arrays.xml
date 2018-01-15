@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="llista_graus">
-        <item>Escull un grau</item>
-        <item>Enginyeria Electrònica Industrial i Automàtica</item>
-        <item>Enginyeria Elèctrica</item>
-        <item>Enginyeria Mecànica</item>
-        <item>Enginyeria Química</item>
-        <item>Enginyeria Tèxtil</item>
-        <item>Enginyeria Disseny i desenvolupament del producte</item>
+        <item>@string/tria_grau</item>
+        <item>@string/EEIA</item>
+        <item>@string/EE</item>
+        <item>@string/EM</item>
+        <item>@string/EQ</item>
+        <item>@string/ET</item>
+        <item>@string/EDDP</item>
     </string-array>
 
     <string-array name="llista_quatrimestres">
@@ -22,12 +22,12 @@
     </string-array>
     <!--Array amb els valors dels dies de la setmana-->
     <string-array name="cabecera_tabla">
-        <item>Hores</item>
-        <item>Dl</item>
-        <item>Dm</item>
-        <item>Dx</item>
-        <item>Dj</item>
-        <item>Dv</item>
+        <item>@string/hores</item>
+        <item>@string/dl</item>
+        <item>@string/dm</item>
+        <item>@string/dx</item>
+        <item>@string/dj</item>
+        <item>@string/dv</item>
     </string-array>
 
 
