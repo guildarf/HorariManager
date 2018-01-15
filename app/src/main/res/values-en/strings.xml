@@ -45,4 +45,6 @@
     <string name="EEIA">Industrial Electronics and Automatic Control Engineering</string>
     <string name="EE">Electrical Engineering</string>
     <string name="EDDP">Industrial Design and Product Development Engineering</string>
+    <string name="no_horari_guardat">No hay ningún horario guardado</string>
+    <string name="soluciona_solap">Por favor, solucione los solapamientos antes de continuar</string>
 </resources>

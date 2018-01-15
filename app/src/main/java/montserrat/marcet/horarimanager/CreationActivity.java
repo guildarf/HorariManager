@@ -1,16 +1,10 @@
 package montserrat.marcet.horarimanager;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +12,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +19,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CreationActivity extends AppCompatActivity {
 
@@ -49,8 +40,8 @@ public class CreationActivity extends AppCompatActivity {
         Classe c3 = new Classe(2, 0, 2);
         Classe c4 = new Classe(2, 1, 3);
 
-        asignatures.get(0).addGrupo(new Grups("101", c1));
-        asignatures.get(0).addGrupo(new Grups("102", c2));
+        asignatures.get(0).addGrupo(new Grups("101", c1)); //el 0 significa que es la primera clicada en el checkbox
+        asignatures.get(0).addGrupo(new Grups("102", c2)); // el 1 seria la segona, etc
         asignatures.get(1).addGrupo(new Grups("101", c3));
         asignatures.get(2).addGrupo(new Grups("101", c4));
 
@@ -72,7 +63,7 @@ public class CreationActivity extends AppCompatActivity {
                     i.putExtra(ViewActivity.ID_ASIGNATURES, asignatures);
                     startActivity(i);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Siusplau,soluciona els solapaments abans de continuar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.soluciona_solap, Toast.LENGTH_SHORT).show();
                 }
             }
         });

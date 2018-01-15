@@ -18,6 +18,7 @@
     <!-- Strings related to choice -->
     <string name="chose_horari">Carrega un horari</string>
     <string name="btn_st_crear">Crea nou horari</string>
+    <string name="no_horari_guardat">No hi ha cap horari guardat</string>
 
     <!-- Strings related to subjects -->
     <string name="btn_validate">Valida</string>
@@ -47,6 +48,7 @@
     <string name="dx">Dimecres</string>
     <string name="dj">Dijous</string>
     <string name="dv">Divendres</string>
+    <string name="soluciona_solap">Siusplau, soluciona els solapaments abans de continuar</string>
 
     <!-- Strings related to view -->
     <string name="titol_final">Horari Final UPC</string>

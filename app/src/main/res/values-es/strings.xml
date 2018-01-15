@@ -44,4 +44,6 @@
     <string name="EQ">Ingeniería Química</string>
     <string name="ET">Ingeniería Téxtil</string>
     <string name="EEIA">Ingeniería Electrónica Industrial i Automática</string>
+    <string name="no_horari_guardat">"There's no saved schedule "</string>
+    <string name="soluciona_solap">Please, solve time overlaps before continuing</string>
 </resources>
