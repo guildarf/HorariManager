@@ -1,12 +1,13 @@
 package montserrat.marcet.horarimanager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by sakum on 14/01/2018.
  */
 
-class Grups {
+class Grups implements Serializable {
 
     String nom;
     ArrayList<Classe> classes;
