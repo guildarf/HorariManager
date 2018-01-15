@@ -49,15 +49,40 @@ public class CreationActivity extends AppCompatActivity {
         nomHorari = getIntent().getStringExtra(SubjectsActivity.HORARI_NOM);
         Log.e(TAG, "onCreate: horari nom="+nomHorari );
         asignatures = (ArrayList<Assignattura>) getIntent().getSerializableExtra(SubjectsActivity.ID_ASIGNSELECT);
-        Classe c1 = new Classe(0, 0, 2);
-        Classe c2 = new Classe(1, 0, 2);
-        Classe c3 = new Classe(2, 0, 2);
-        Classe c4 = new Classe(2, 1, 3);
+        Classe c1=new Classe("Laboratori","Tr1.01","Javier Alonso1","",0, 0, 1,"Catala","");
+        Classe c2=new Classe("Laboratori","Tr1.02","Javier Alonso2","",1, 1, 1,"Catala","");
+        Classe c3=new Classe("Laboratori","Tr1.03","Javier Alonso3","",2, 2, 1,"Catala","");
+        Classe c4=new Classe("Laboratori","Tr1.04","Javier Alonso4","",3, 3, 1,"Catala","");
+        Classe c5=new Classe("Laboratori","Tr1.06","Javier Alonso5","",4, 4, 1,"Catala","");
+        Classe c6=new Classe("Laboratori","Tr1.07","Javier Alonso6","",0, 5, 2,"Catala","");
+        Classe c7=new Classe("Laboratori","Tr1.08","Javier Alonso7","",1, 6, 2,"Catala","");
+        Classe c8=new Classe("Laboratori","Tr1.09","Javier Alonso8","",2, 7, 2,"Catala","");
+        Classe c9=new Classe("Problemes","Tr1.010","Javier Alonso9","",3, 8, 2,"Catala","");
+        Classe c10=new Classe("Problemes","Tr1.11","Javier Alonso10","",4, 9, 2,"Catala","");
+        Classe c11=new Classe("Problemes","Tr1.12","Javier Alonso11","",0, 10, 3,"Catala","");
+        Classe c12=new Classe("Problemes","Tr1.13","Javier Alonso12","",1, 11, 3,"Catala","");
+        Classe c13=new Classe("Teoria","Tr1.14","Javier Alonso13","",2, 12, 3,"Catala","");
+        Classe c14=new Classe("Teoria","Tr1.15","Javier Alonso14","",3, 13, 4,"Catala","");
+        Classe c15=new Classe("Teoria","Tr1.16","Javier Alonso15","",4, 0, 4,"Catala","");
+
 
         asignatures.get(0).addGrupo(new Grups("101", c1));
         asignatures.get(0).addGrupo(new Grups("102", c2));
-        asignatures.get(1).addGrupo(new Grups("101", c3));
-        asignatures.get(2).addGrupo(new Grups("101", c4));
+        asignatures.get(0).addGrupo(new Grups("103", c3));
+        asignatures.get(0).addGrupo(new Grups("104", c4));
+        asignatures.get(1).addGrupo(new Grups("101", c5));
+        asignatures.get(1).addGrupo(new Grups("102", c6));
+        asignatures.get(1).addGrupo(new Grups("103", c7));
+        asignatures.get(2).addGrupo(new Grups("101", c8));
+        asignatures.get(2).addGrupo(new Grups("102", c9));
+        asignatures.get(2).addGrupo(new Grups("103", c10));
+        asignatures.get(3).addGrupo(new Grups("101", c11));
+        asignatures.get(3).addGrupo(new Grups("102", c12));
+        asignatures.get(3).addGrupo(new Grups("103", c13));
+        asignatures.get(4).addGrupo(new Grups("101", c14));
+        asignatures.get(4).addGrupo(new Grups("102", c15));
+        asignatures.get(4).addGrupo(new Grups("103", c11));
+
 
         ListView list = (ListView) findViewById(R.id.asignaturas);
         SelectorGrupAdapter adapter = new SelectorGrupAdapter(this, R.layout.list_item_activity_creation, asignatures, createListener());

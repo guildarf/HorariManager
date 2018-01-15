@@ -1,12 +1,15 @@
 package montserrat.marcet.horarimanager;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -27,11 +30,11 @@ public class Tabla {
 
     /**
      * Constructor de la tabla
+     *
      * @param actividad Actividad donde va a estar la tabla
-     * @param tabla TableLayout donde se pintará la tabla
+     * @param tabla     TableLayout donde se pintará la tabla
      */
-    public Tabla(Activity actividad, TableLayout tabla)
-    {
+    public Tabla(Activity actividad, TableLayout tabla) {
         this.actividad = actividad;
         this.tabla = tabla;
         rs = this.actividad.getResources();
@@ -42,10 +45,10 @@ public class Tabla {
 
     /**
      * Añade la cabecera a la tabla
+     *
      * @param recursocabecera Recurso (array) donde se encuentra la cabecera de la tabla
      */
-    public void agregarCabecera(int recursocabecera)
-    {
+    public void agregarCabecera(int recursocabecera) {
         TableRow.LayoutParams layoutCelda;
         TableRow fila = new TableRow(actividad);
         TableRow.LayoutParams layoutFila = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
@@ -54,8 +57,7 @@ public class Tabla {
         String[] arraycabecera = rs.getStringArray(recursocabecera);
         COLUMNAS = arraycabecera.length;
 
-        for(int i = 0; i < arraycabecera.length; i++)
-        {
+        for (int i = 0; i < arraycabecera.length; i++) {
             Button texto = new Button(actividad);
             layoutCelda = new TableRow.LayoutParams(obtenerAnchoPixelesTexto(arraycabecera[i]), TableRow.LayoutParams.WRAP_CONTENT);
             texto.setText(arraycabecera[i]);
@@ -74,26 +76,25 @@ public class Tabla {
 
     /**
      * Agrega una fila a la tabla
+     *
      * @param elementos Elementos de la fila
      */
-    public void agregarFilaTabla(ArrayList<String> elementos)
-    {
+    public void agregarFilaTabla(ArrayList<String> elementos) {
         TableRow.LayoutParams layoutCelda;
         TableRow.LayoutParams layoutFila = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
         TableRow fila = new TableRow(actividad);
         fila.setLayoutParams(layoutFila);
 
-        for(int i = 0; i< elementos.size(); i++)
-        {
-            Button texto = new Button(actividad);
-            texto.setText(String.valueOf(elementos.get(i)));
-            texto.setGravity(Gravity.CENTER_HORIZONTAL);
-            texto.setTextAppearance(actividad, R.style.estilo_celda);
-            texto.setBackgroundResource(R.drawable.tabla_celda);
-            layoutCelda = new TableRow.LayoutParams(obtenerAnchoPixelesTexto(texto.getText().toString()), TableRow.LayoutParams.WRAP_CONTENT);
-            texto.setLayoutParams(layoutCelda);
+        for (int i = 0; i < elementos.size(); i++) {
+            celdaButton button = new celdaButton(actividad);
+            button.setText(String.valueOf(elementos.get(i)));
+            button.setGravity(Gravity.CENTER_HORIZONTAL);
+            button.setTextAppearance(actividad, R.style.estilo_celda);
+            button.setBackgroundResource(R.drawable.tabla_celda);
+            layoutCelda = new TableRow.LayoutParams(obtenerAnchoPixelesTexto(button.getText().toString()), TableRow.LayoutParams.WRAP_CONTENT);
+            button.setLayoutParams(layoutCelda);
 
-            fila.addView(texto);
+            fila.addView(button);
         }
 
         tabla.addView(fila);
@@ -105,12 +106,11 @@ public class Tabla {
 
     /**
      * Elimina una fila de la tabla
+     *
      * @param indicefilaeliminar Indice de la fila a eliminar
      */
-    public void eliminarFila(int indicefilaeliminar)
-    {
-        if( indicefilaeliminar > 0 && indicefilaeliminar < FILAS )
-        {
+    public void eliminarFila(int indicefilaeliminar) {
+        if (indicefilaeliminar > 0 && indicefilaeliminar < FILAS) {
             tabla.removeViewAt(indicefilaeliminar);
             FILAS--;
         }
@@ -118,78 +118,78 @@ public class Tabla {
 
     /**
      * Devuelve las filas de la tabla, la cabecera se cuenta como fila
+     *
      * @return Filas totales de la tabla
      */
-    public int getFilas()
-    {
+    public int getFilas() {
         return FILAS;
     }
 
     /**
      * Devuelve las columnas de la tabla
+     *
      * @return Columnas totales de la tabla
      */
-    public int getColumnas()
-    {
+    public int getColumnas() {
         return COLUMNAS;
     }
 
     /**
      * Devuelve el número de celdas de la tabla, la cabecera se cuenta como fila
+     *
      * @return Número de celdas totales de la tabla
      */
-    public int getCeldasTotales()
-    {
+    public int getCeldasTotales() {
         return FILAS * COLUMNAS;
     }
 
     /**
      * Obtiene el ancho en píxeles de un texto en un String
+     *
      * @param texto Texto
      * @return Ancho en píxeles del texto
      */
-    private int obtenerAnchoPixelesTexto(String texto)
-    {
+    private int obtenerAnchoPixelesTexto(String texto) {
         Paint p = new Paint();
         Rect bounds = new Rect();
-        p.setTextSize(75);
+        p.setTextSize(80);
 
         p.getTextBounds(texto, 0, texto.length(), bounds);
         return bounds.width();
     }
 
-    public Button get(int fila, int columna) {
-        return (Button)filas.get(fila).getChildAt(columna);
+    public celdaButton get(int fila, int columna) {
+        return (celdaButton) filas.get(fila).getChildAt(columna);
 
     }
 
     public boolean pintarTabla(List<Assignattura> asignatures) {
         List<Classe> classes;
-        Button v;
+        celdaButton button;
         boolean solapament;
         for (int dia = 0; dia < 5; dia++) {
             for (int hora = 0; hora < 13; hora++) {
-                v = (this.get(hora + 1, dia + 1));
-                v.setText("");
-                v.setBackgroundResource(R.drawable.tabla_celda);
+                button = (this.get(hora + 1, dia + 1));
+                button.setText("");
+                button.setBackgroundResource(R.drawable.tabla_celda);
+                button.removeClasse();
             }
         }
         solapament = false;
         for (Assignattura a : asignatures) {
-            Log.v("HH", "JJ");
             if (a.getGrupoElegido() != null) {
                 classes = a.getGrupoElegido().getClasses();
                 for (Classe c : classes) {
                     for (int hora = c.getHoraInici(); hora < c.getHoraFin(); hora++) {
-                        v = this.get(hora + 1, c.getDia() + 1);
-                        String nom = v.getText().toString();
-                        if (!nom.isEmpty()) {
-                            v.setText(nom + "\nVS\n" + a.getNom() + "\n" + a.getGrupoElegido().getNom());
-                            v.setBackgroundColor(Color.RED);
+                        button = this.get(hora + 1, c.getDia() + 1);
+                        String nom = button.getText().toString();
+                        if (!button.addClasse(c)) {
+                            button.setText(nom + "\nVS\n" + a.getNom() + "\n" + a.getGrupoElegido().getNom());
+                            button.setBackgroundColor(Color.RED);
                             solapament = true;
                         } else {
-                            v.setBackgroundColor(Color.BLUE);
-                            v.setText(a.getNom() + "\n" + a.getGrupoElegido().getNom());
+                            button.setBackgroundColor(Color.BLUE);
+                            button.setText(a.getNom() + "\n" + a.getGrupoElegido().getNom());
                         }
 
                     }
@@ -215,6 +215,50 @@ public class Tabla {
             this.agregarFilaTabla(elementos);
         }
 
+    }
+
+
+    public void setOnclickListener(View.OnClickListener listener) {
+        for(int fila=1;fila<this.getFilas();fila++){
+            for(int colum=1;colum<getColumnas();colum++){
+                get(fila,colum).setOnClickListener(listener);
+            }
+        }
+    }
+}
+
+class celdaButton extends android.support.v7.widget.AppCompatButton{
+
+    Classe classes;
+
+
+    public celdaButton(Context context) {
+        super(context);
+    }
+
+    public celdaButton(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public celdaButton(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    public boolean addClasse(Classe c){
+        if(classes==null){
+            classes=c;
+            return true;
+        }
+        else return false;
+    }
+
+
+    public void removeClasse() {
+        this.classes=null;
+    }
+
+    public Classe getClasse() {
+        return classes;
     }
 }
 

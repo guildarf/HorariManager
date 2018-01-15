@@ -14,22 +14,26 @@ class Classe implements Serializable {
     String assignatura;
     int dia;
     int horaInici;
-    int horaFin;
+    int durada;
+    String idioma;
+    public String codi;
 
-    public Classe(String tipus, String aula, String professor, String assignatura, int dia, int horaInici, int horaFin) {
+    public Classe(String tipus, String aula, String professor, String assignatura, int dia, int horaInici, int durada, String idioma, String codi) {
         this.tipus = tipus;
         this.aula = aula;
         this.professor = professor;
         this.assignatura = assignatura;
         this.dia = dia;
         this.horaInici = horaInici;
-        this.horaFin = horaFin;
+        this.durada = durada;
+        this.idioma = idioma;
+        this.codi = codi;
     }
 
-    public Classe(int dia, int horaInici, int horaFin) {
+    public Classe(int dia, int horaInici, int durada) {
         this.dia = dia;
         this.horaInici = horaInici;
-        this.horaFin = horaFin;
+        this.durada = durada;
     }
 
     public String getTipus() {
@@ -72,8 +76,21 @@ class Classe implements Serializable {
         this.horaInici = horaInici;
     }
 
+    public String getIdioma() {
+        return idioma;
+    }
 
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
 
+    public String getCodi() {
+        return codi;
+    }
+
+    public void setCodi(String codi) {
+        this.codi = codi;
+    }
 
     public String getAssignatura() {
         return assignatura;
@@ -84,10 +101,11 @@ class Classe implements Serializable {
     }
 
     public int getHoraFin() {
-        return horaFin;
+        int result= horaInici+durada;
+        if (result>13){
+            return 13;
+        }
+        return result;
     }
 
-    public void setHoraFin(int horaFin) {
-        this.horaFin = horaFin;
-    }
 }

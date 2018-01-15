@@ -25,57 +25,59 @@ import java.util.ArrayList;
 public class ViewActivity extends AppCompatActivity {
 
     static final String ID_ASIGNATURES ="uououo" ;
-    Spinner sp_graus;
+
     String[] graus;
     private ArrayList<Assignattura> asignatures;
+    TextView tv_assig;
+    TextView tv_idioma;
+    TextView tv_aula;
+    TextView tv_prof;
+    TextView tv_tipus;
+    TextView tv_codi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
         asignatures=(ArrayList<Assignattura>) getIntent().getSerializableExtra(ID_ASIGNATURES);
 
-        TextView tv_assig = (TextView) findViewById(R.id.tv_assig);
-        tv_assig.setText("PMA");
-        TextView tv_idioma = (TextView) findViewById(R.id.tv_idioma);
-        tv_idioma.setText("CAST");
-        TextView tv_aula = (TextView) findViewById(R.id.tv_aula);
-        tv_aula.setText("TR1 2.01");
-        TextView tv_prof = (TextView) findViewById(R.id.tv_prof);
-        tv_prof.setText("A.FERNANDEZ");
-        TextView tv_tipus = (TextView) findViewById(R.id.tv_tipus);
-        tv_tipus.setText("TEORIA");
-        TextView tv_codi = (TextView) findViewById(R.id.tv_codi);
-        tv_codi.setText("320041");
+        tv_assig = (TextView) findViewById(R.id.tv_assig);
+        tv_assig.setText("");
+        tv_idioma = (TextView) findViewById(R.id.tv_idioma);
+        tv_idioma.setText("");
+        tv_aula = (TextView) findViewById(R.id.tv_aula);
+        tv_aula.setText("");
+        tv_prof = (TextView) findViewById(R.id.tv_prof);
+        tv_prof.setText("");
+        tv_tipus = (TextView) findViewById(R.id.tv_tipus);
+        tv_tipus.setText("");
+        tv_codi = (TextView) findViewById(R.id.tv_codi);
+        tv_codi.setText("");
 
 
         Tabla tabla = new Tabla(this, (TableLayout) findViewById(R.id.tabla));
         tabla.iniciar();
         tabla.pintarTabla(asignatures);
+        tabla.setOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                celdaButton bb=(celdaButton)view;
+                Classe c=bb.getClasse();
+                tv_assig.setText(c.getAssignatura());
+                tv_idioma.setText(c.getIdioma());
+                tv_aula.setText(c.getAula());
+                tv_prof.setText(c.getProfessor());
+                tv_tipus.setText(c.getTipus());
+                tv_codi.setText(c.getCodi());
+            }
+        });
 
-        sp_graus = (Spinner) findViewById(R.id.sp_graus);
         graus = getResources().getStringArray(R.array.llista_graus);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, graus);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_graus.setAdapter(adapter);
-        setSpinnerListener();
 
-    }
-
-    private void setSpinnerListener() {
-
-        sp_graus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0)
-                    Toast.makeText(getApplicationContext(), "Has triat " + graus[position], Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
 
     }
 
