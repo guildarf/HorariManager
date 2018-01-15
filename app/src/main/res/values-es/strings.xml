@@ -44,4 +44,6 @@
     <string name="EQ">Ingeniería Química</string>
     <string name="ET">Ingeniería Téxtil</string>
     <string name="EEIA">Ingeniería Electrónica Industrial i Automática</string>
+    <string name="NoHorarisSeleccionats">No hi ha cap horari guardat</string>
+    <string name="confirm">Confirmar</string>
 </resources>

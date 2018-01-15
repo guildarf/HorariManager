@@ -44,4 +44,6 @@
     <string name="titol_final">Horari Final UPC</string>
     <string name="tria_grau">Escull un grau</string>
     <string name="triar_grup">Escull grup per cada assignatura</string>
+    <string name="NoHorarisSeleccionats">No hi ha cap horari guardat</string>
+    <string name="confirm">Confirmar</string>
 </resources>

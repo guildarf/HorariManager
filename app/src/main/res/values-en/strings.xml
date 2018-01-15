@@ -45,4 +45,6 @@
     <string name="EEIA">Industrial Electronics and Automatic Control Engineering</string>
     <string name="EE">Electrical Engineering</string>
     <string name="EDDP">Industrial Design and Product Development Engineering</string>
+    <string name="NoHorarisSeleccionats">No hi ha cap horari guardat</string>
+    <string name="confirm">Confirmar</string>
 </resources>

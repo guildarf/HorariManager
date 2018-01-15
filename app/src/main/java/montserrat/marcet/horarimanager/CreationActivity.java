@@ -22,16 +22,21 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CreationActivity extends AppCompatActivity {
 
+    private static final String TAG = "CreationActivity";
     ArrayList<Assignattura> asignatures;
     boolean solapament;
     private Tabla tabla;
@@ -41,8 +46,8 @@ public class CreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation);
-      //  nomHorari = getIntent().getStringExtra(SubjectsActivity.HORARI_NOM);
-        nomHorari="guillem";
+        nomHorari = getIntent().getStringExtra(SubjectsActivity.HORARI_NOM);
+        Log.e(TAG, "onCreate: horari nom="+nomHorari );
         asignatures = (ArrayList<Assignattura>) getIntent().getSerializableExtra(SubjectsActivity.ID_ASIGNSELECT);
         Classe c1 = new Classe(0, 0, 2);
         Classe c2 = new Classe(1, 0, 2);
@@ -79,18 +84,42 @@ public class CreationActivity extends AppCompatActivity {
     }
 
     private void guardarDades() {
-        FileOutputStream fos = null;
+        FileOutputStream fos;
         ObjectOutputStream oos;
+        FileInputStream fis;
+        ObjectInputStream ois;
+        HashSet<String> horarisGuardats;
+        String horariName;
+        try{
+            fis=openFileInput(ChoiceActivity.LLISTA_HORARIS_GUARDATS);
+            ois=new ObjectInputStream(fis);
+            horarisGuardats=(HashSet) ois.readObject();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            horarisGuardats=new HashSet<>();
+        }
+
         try {
-            fos = openFileOutput(nomHorari + ".tmp", Context.MODE_PRIVATE);
+            horariName=nomHorari + ".tmp";
+            fos = openFileOutput(horariName, Context.MODE_PRIVATE);
             oos = new ObjectOutputStream(fos);
             oos.writeObject(asignatures);
+            horarisGuardats.add(horariName);
+            Log.v("","HorariGuarda");
+
+            fos=openFileOutput(ChoiceActivity.LLISTA_HORARIS_GUARDATS, Context.MODE_PRIVATE);
+            oos=new ObjectOutputStream(fos);
+            oos.writeObject(horarisGuardats);
             oos.close();
+            Log.v("","llista guardada");
         } catch (FileNotFoundException e) {
             Log.v("eeeeeee",e.getMessage());
         } catch (IOException e) {
             Log.v("eeeeeee2",e.getMessage());
         }
+
+
 
 
     }

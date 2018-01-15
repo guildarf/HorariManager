@@ -3,6 +3,7 @@ package montserrat.marcet.horarimanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -24,6 +25,7 @@ public class SubjectsActivity extends AppCompatActivity {
 
     public static final String ID_ASIGNSELECT = "hola";
     public static final String HORARI_NOM = "horari_nom";
+    private static final String TAG = "Subjects activity";
     PlaDocent plaDocent;
     Spinner sp_graus;
     String [] graus;
@@ -59,12 +61,13 @@ public class SubjectsActivity extends AppCompatActivity {
         btn_validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e(TAG, "onClick: nom horari"+mEdit.getText());
                 if (mEdit.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(),R.string.falta_nom, Toast.LENGTH_SHORT).show();
                 }else {
                     Intent i=new Intent(SubjectsActivity.this, CreationActivity.class);
                     i.putExtra(ID_ASIGNSELECT, (Serializable) asignSelec);
-                    i.putExtra(HORARI_NOM,mEdit.getText());
+                    i.putExtra(HORARI_NOM,mEdit.getText().toString());
                     startActivity(i);
                 }
 
@@ -124,9 +127,9 @@ public class SubjectsActivity extends AppCompatActivity {
                     asignSelec.add(selected);
                 }
                 if(numSelect!=0){
-                    neteja.setText("Neteja ("+numSelect+")");
+                    neteja.setText(String.format(getString(R.string.btn_cleaner) +" ("+numSelect+")"));
                 }else{
-                    neteja.setText("Neteja");
+                    neteja.setText(R.string.btn_cleaner);
                 }
                 return false;
             }

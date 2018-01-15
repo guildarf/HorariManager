@@ -58,4 +58,7 @@
     <string name="prof">Professor</string>
     <string name="codi">Codi</string>
     <string name="tanca_sessio">Tanca Sessió</string>
+    <string name="NoHorarisSeleccionats">No hi ha cap horari guardat</string>
+    <string name="confirm">Confirmar</string>
+    <string name="confirmDeleteMessage">Seguro que desea eliminar el horario %s ?</string>
 </resources>
