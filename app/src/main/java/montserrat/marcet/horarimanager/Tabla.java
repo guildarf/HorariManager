@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.Log;
 import android.view.Gravity;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -55,14 +56,13 @@ public class Tabla {
 
         for(int i = 0; i < arraycabecera.length; i++)
         {
-            TextView texto = new TextView(actividad);
+            Button texto = new Button(actividad);
             layoutCelda = new TableRow.LayoutParams(obtenerAnchoPixelesTexto(arraycabecera[i]), TableRow.LayoutParams.WRAP_CONTENT);
             texto.setText(arraycabecera[i]);
             texto.setGravity(Gravity.CENTER_HORIZONTAL);
             texto.setTextAppearance(actividad, R.style.estilo_celda);
             texto.setBackgroundResource(R.drawable.tabla_celda_cabecera);
             texto.setLayoutParams(layoutCelda);
-
             fila.addView(texto);
         }
 
@@ -85,7 +85,7 @@ public class Tabla {
 
         for(int i = 0; i< elementos.size(); i++)
         {
-            TextView texto = new TextView(actividad);
+            Button texto = new Button(actividad);
             texto.setText(String.valueOf(elementos.get(i)));
             texto.setGravity(Gravity.CENTER_HORIZONTAL);
             texto.setTextAppearance(actividad, R.style.estilo_celda);
@@ -158,20 +158,20 @@ public class Tabla {
         return bounds.width();
     }
 
-    public TextView get(int fila, int columna) {
-        return (TextView)filas.get(fila).getChildAt(columna);
+    public Button get(int fila, int columna) {
+        return (Button)filas.get(fila).getChildAt(columna);
 
     }
 
     public boolean pintarTabla(List<Assignattura> asignatures) {
         List<Classe> classes;
-        TextView v;
+        Button v;
         boolean solapament;
         for (int dia = 0; dia < 5; dia++) {
             for (int hora = 0; hora < 13; hora++) {
                 v = (this.get(hora + 1, dia + 1));
                 v.setText("");
-                v.setBackgroundColor(Color.WHITE);
+                v.setBackgroundResource(R.drawable.tabla_celda);
             }
         }
         solapament = false;
@@ -207,11 +207,11 @@ public class Tabla {
         for (int i = 0; i < 13; i++) {
             ArrayList<String> elementos = new ArrayList<String>();
             elementos.add((i + 8) + "-" + (i + 9));
-            elementos.add(",                ,");
-            elementos.add(",                ,");
-            elementos.add(",                ,");
-            elementos.add(",                ,");
-            elementos.add(",                ,");
+            elementos.add("                ");
+            elementos.add("                ");
+            elementos.add("                ");
+            elementos.add("                ");
+            elementos.add("                ");
             this.agregarFilaTabla(elementos);
         }
 
