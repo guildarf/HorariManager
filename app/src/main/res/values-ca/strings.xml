@@ -51,4 +51,7 @@
     <string name="falta_contra">Falta afegir una contrassenya</string>
     <string name="falta_correu">Falta afegir un correu electrònic</string>
     <string name="falta_correu_i_contra">"Falta afegir un correu i una contrassenya "</string>
+    <string name="minim_5">Has de seleccionar mínim 5 assignatures</string>
+    <string name="max_10">Has de seleccionar màxim 10 assignatures</string>
+    <string name="escollir_grau_abans">Cal escollir un grau abans</string>
 </resources>

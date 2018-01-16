@@ -26,7 +26,7 @@ public class Tabla {
     private Resources rs;
     private int FILAS, COLUMNAS;
     private int defaultCellHeight =270;
-    private int defaultCellWidth =180;
+    private int defaultCellWidth =210;
 
 
     public Tabla(Activity actividad, TableLayout tabla) {
@@ -52,7 +52,7 @@ public class Tabla {
             layoutCelda = new TableRow.LayoutParams(defaultCellWidth, TableRow.LayoutParams.WRAP_CONTENT);
             button.setText(arraycabecera[i]);
             button.setTextSize(12);
-            button.setHeight(150);
+            button.setHeight(100);
             button.setWidth(defaultCellWidth);
             button.setGravity(Gravity.CENTER_HORIZONTAL);
             button.setTextAppearance(actividad, R.style.estilo_celda);

@@ -34,7 +34,7 @@ public class SubjectsActivity extends AppCompatActivity {
     ExpandableListView subjectList;
     MyExpandableListAdapter subjectadapter;
     List<Assignattura> asignSelec;
-    int numSelect=0;
+    int numSelect=0,position;
     Button neteja;
 
 
@@ -64,12 +64,16 @@ public class SubjectsActivity extends AppCompatActivity {
                 Log.e(TAG, "onClick: nom horari"+mEdit.getText());
                 if (mEdit.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(),R.string.falta_nom, Toast.LENGTH_SHORT).show();
-                }else {
-                    Intent i=new Intent(SubjectsActivity.this, CreationActivity.class);
-                    i.putExtra(ID_ASIGNSELECT, (Serializable) asignSelec);
-                    i.putExtra(HORARI_NOM,mEdit.getText().toString());
-                    startActivity(i);
-                }
+                } else if (numSelect<5){
+                    Toast.makeText(getApplicationContext(),R.string.minim_5, Toast.LENGTH_SHORT).show();}
+                  else if (numSelect>10){
+                    Toast.makeText(getApplicationContext(),R.string.max_10, Toast.LENGTH_SHORT).show();}
+                        else {
+                        Intent i=new Intent(SubjectsActivity.this, CreationActivity.class);
+                        i.putExtra(ID_ASIGNSELECT, (Serializable) asignSelec);
+                        i.putExtra(HORARI_NOM,mEdit.getText().toString());
+                        startActivity(i);
+                        }
 
             }
         });
@@ -82,7 +86,9 @@ public class SubjectsActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position!=0) Toast.makeText(getApplicationContext(),getString(R.string.assig_triada)+" "+ graus[position], Toast.LENGTH_SHORT).show();
+                else  Toast.makeText(getApplicationContext(),getString(R.string.escollir_grau_abans), Toast.LENGTH_SHORT).show();
                 omplirData(position-1);
+                subjectadapter.notifyDataSetChanged();//
             }
 
             @Override
@@ -122,12 +128,15 @@ public class SubjectsActivity extends AppCompatActivity {
                 if(asignSelec.contains(selected)){
                     numSelect--;
                     asignSelec.remove(selected);
+                    subjectadapter.notifyDataSetChanged();//
                 }else{
                     numSelect++;
                     asignSelec.add(selected);
+                    subjectadapter.notifyDataSetChanged();//
                 }
                 if(numSelect!=0){
                     neteja.setText(String.format(getString(R.string.btn_cleaner) +" ("+numSelect+")"));
+                    subjectadapter.notifyDataSetChanged();//
                 }else{
                     neteja.setText(R.string.btn_cleaner);
                 }
