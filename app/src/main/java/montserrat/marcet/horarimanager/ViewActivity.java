@@ -65,13 +65,16 @@ public class ViewActivity extends AppCompatActivity {
             public void onClick(View view) {
                 celdaButton bb=(celdaButton)view;
                 Classe c=bb.getClasse();
-                tv_assig.setText(c.getAssignatura());
-                tv_idioma.setText(c.getIdioma());
-                tv_aula.setText(c.getAula());
-                tv_prof.setText(c.getProfessor());
-                tv_tipus.setText(c.getTipus());
-                tv_codi.setText(c.getCodi());
+                if(c!=null) {
+                    tv_assig.setText(c.getAssignatura());
+                    tv_idioma.setText(c.getIdioma());
+                    tv_aula.setText(c.getAula());
+                    tv_prof.setText(c.getProfessor());
+                    tv_tipus.setText(c.getTipus());
+                    tv_codi.setText(c.getCodi());
+                }
             }
+
         });
 
         graus = getResources().getStringArray(R.array.llista_graus);

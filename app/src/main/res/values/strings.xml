@@ -67,4 +67,5 @@
     <string name="confirm">Confirmar</string>
     <string name="confirmDeleteMessage">Seguro que desea eliminar el horario %s ?</string>
     <string name="welcoming">Benvingut a HorariManager</string>
+    <string name="confirmarExit">Segur que dessitges sortir?</string>
 </resources>

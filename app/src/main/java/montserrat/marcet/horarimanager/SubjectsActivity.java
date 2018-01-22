@@ -110,6 +110,7 @@ public class SubjectsActivity extends AppCompatActivity {
         sp_graus = (Spinner) findViewById(R.id.sp_graus);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_spinner_item,graus);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         sp_graus.setAdapter(adapter);
 
 

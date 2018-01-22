@@ -5,16 +5,16 @@
 
     <TextView
         android:id="@+id/subject"
-        android:layout_width="125dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:text="TextView" />
 
     <RadioGroup
         android:id="@+id/RG_sbjt1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:orientation="horizontal"
         android:visibility="visible">
 
@@ -22,7 +22,7 @@
             android:id="@+id/rd_btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="22dp"
+            android:layout_marginRight="2dp"
             android:text="@string/Grup"
             android:visibility="visible" />
 
@@ -30,7 +30,7 @@
             android:id="@+id/rd_btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="22dp"
+            android:layout_marginRight="2dp"
             android:text="@string/Grup"
             android:visibility="visible" />
 
@@ -38,7 +38,7 @@
             android:id="@+id/rd_btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="22dp"
+            android:layout_marginRight="2dp"
             android:text="@string/Grup"
             android:visibility="visible" />
 
@@ -46,6 +46,7 @@
             android:id="@+id/rd_btn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
             android:text="@string/Grup"
             android:visibility="visible" />
 
@@ -53,7 +54,7 @@
             android:id="@+id/rd_btn5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="2dp"
             android:text="@string/Grup"
             android:visibility="visible" />
 
@@ -61,7 +62,7 @@
             android:id="@+id/rd_btn6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="2dp"
             android:text="@string/Grup"
             android:visibility="visible" />
 

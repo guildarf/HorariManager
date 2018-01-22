@@ -202,8 +202,24 @@ public class ChoiceActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        //TODO pedir confirmacion y salir de la app
-        //startActivity(new Intent(ChoiceActivity.this, ChoiceActivity.class));// do something here and don't write super.onBackPressed()
+        AlertDialog.Builder builder= new AlertDialog.Builder(ChoiceActivity.this);
+        builder.setTitle(R.string.confirm);
+        builder.setMessage(R.string.confirmarExit);
+        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(ChoiceActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("Exit me", true);
+                startActivity(intent);
+                finish();
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel,null);
+        builder.create();
+        builder.show();
+
     }
 
 }
+

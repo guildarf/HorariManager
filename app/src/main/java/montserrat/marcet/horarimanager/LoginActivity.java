@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(LoginActivity.this,ChoiceActivity.class)); //ens porta a la activitat choice si dades ok
+                    startActivity(new Intent(LoginActivity.this, ChoiceActivity.class)); //ens porta a la activitat choice si dades ok
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + firebaseAuth.getCurrentUser().getUid());
                 } else {
@@ -112,6 +112,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 loguejar_usuari();
             }
         });
+        setContentView(R.layout.activity_login);
+
+        if (getIntent().getBooleanExtra("Exit me", false)) {
+            finish();
+            return; // add this to prevent from doing unnecessary stuffs
+
+        }
     }
 
     @Override
