@@ -55,4 +55,5 @@
     <string name="minim_5">You must select at least 5 subjects before continuing</string>
     <string name="max_10">You cannot select more than 10 subjects</string>
     <string name="escollir_grau_abans">You must choose a degree before</string>
+    <string name="solapament">Please, solve the overlap problems before continuing</string>
 </resources>

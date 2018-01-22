@@ -54,4 +54,5 @@
     <string name="minim_5">Has de seleccionar mínim 5 assignatures</string>
     <string name="max_10">Has de seleccionar màxim 10 assignatures</string>
     <string name="escollir_grau_abans">Cal escollir un grau abans</string>
+    <string name="solapament">Siusplau, soluciona els solapaments abans de continuar</string>
 </resources>

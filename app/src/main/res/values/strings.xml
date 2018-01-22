@@ -52,6 +52,7 @@
     <string name="dx">Dimecres</string>
     <string name="dj">Dijous</string>
     <string name="dv">Divendres</string>
+    <string name="solapament">Siusplau, soluciona els solapaments abans de continuar</string>
 
     <!-- Strings related to view -->
     <string name="titol_final">Horari Final UPC</string>

@@ -224,4 +224,3 @@ class celdaButton extends android.support.v7.widget.AppCompatButton{
         return classes;
     }
 }
-

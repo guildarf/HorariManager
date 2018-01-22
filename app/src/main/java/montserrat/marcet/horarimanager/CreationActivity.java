@@ -156,7 +156,7 @@ public class CreationActivity extends AppCompatActivity {
                     i.putExtra(ViewActivity.ID_ASIGNATURES, asignatures);
                     startActivity(i);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Siusplau,soluciona els solapaments abans de continuar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),R.string.solapament, Toast.LENGTH_SHORT).show();
                 }
             }
         });
