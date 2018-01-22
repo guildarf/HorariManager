@@ -58,8 +58,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
 
-    //DatabaseReference base_dades_firebase = FirebaseDatabase.getInstance().getReference(); //ens conectem a la base de dades
-    //DatabaseReference base_child = base_dades_firebase.child("usuaris");
+
+
+
+
+
+
 
     private FirebaseAuth mAuth; // variable q usem per conectarnos
     private FirebaseAuth.AuthStateListener mAuthListener; //el listener ens comprovara l'autentificacio

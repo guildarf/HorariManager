@@ -15,6 +15,9 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -146,6 +149,9 @@ public class CreationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!solapament) {
                     guardarDades();
+
+
+
                     Intent i = new Intent(CreationActivity.this, ViewActivity.class);
                     i.putExtra(ViewActivity.ID_ASIGNATURES, asignatures);
                     startActivity(i);
@@ -174,7 +180,7 @@ public class CreationActivity extends AppCompatActivity {
         }
 
         try {
-            horariName=nomHorari + ".tmp";
+            horariName=nomHorari + "_tmp";
             fos = openFileOutput(horariName, Context.MODE_PRIVATE);
             oos = new ObjectOutputStream(fos);
             oos.writeObject(asignatures);
@@ -186,6 +192,18 @@ public class CreationActivity extends AppCompatActivity {
             oos.writeObject(horarisGuardats);
             oos.close();
             Log.v("","llista guardada");
+
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference base_dades_firebase = database.getReference(Constants.FIREBASE_CHILD_HORARIS); //ens conectem a la base de dades
+            //DatabaseReference base_child = base_dades_firebase.child("usuaris");
+
+            base_dades_firebase.child(nomHorari + "_tmp").push().setValue(asignatures);
+
+            Toast.makeText(CreationActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+
+
+
         } catch (FileNotFoundException e) {
             Log.v("eeeeeee",e.getMessage());
         } catch (IOException e) {

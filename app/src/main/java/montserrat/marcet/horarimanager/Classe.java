@@ -35,6 +35,7 @@ class Classe implements Serializable {
         this.horaInici = horaInici;
         this.durada = durada;
     }
+    public Classe() {}
 
     public String getTipus() {
         return tipus;

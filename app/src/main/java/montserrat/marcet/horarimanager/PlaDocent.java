@@ -3,11 +3,9 @@ package montserrat.marcet.horarimanager;
 import android.content.res.Resources;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 /**
  * Created by sakum on 14/01/2018.
@@ -21,6 +19,9 @@ class PlaDocent {
     public PlaDocent(Resources resources) {
         graus=resources.getStringArray(R.array.llista_graus);
         quatris= resources.getStringArray(R.array.llista_quatrimestres);
+
+
+
         plaDocent=new HashMap<>();
         //TODO que funcione aunque cambie el orden de los grados
         //TODO que recoja las asignaturas completas(con su horario y subgrupos) para pasarlo a la next activity

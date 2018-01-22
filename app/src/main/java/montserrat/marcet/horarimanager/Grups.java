@@ -2,6 +2,7 @@ package montserrat.marcet.horarimanager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sakum on 14/01/2018.
@@ -10,12 +11,14 @@ import java.util.ArrayList;
 class Grups implements Serializable {
 
     String nom;
-    ArrayList<Classe> classes;
+    List<Classe> classes= new ArrayList<> ();
 
-    public Grups(String nom) {
+    public Grups(String nom,ArrayList<Classe>classes) {
         this.nom = nom;
-        classes=new ArrayList<>();
+        this.classes = classes;
     }
+
+    public Grups() {}
 
     public Grups(String nom, Classe classe) {
         this.nom = nom;
@@ -32,7 +35,7 @@ class Grups implements Serializable {
         this.nom = nom;
     }
 
-    public ArrayList<Classe> getClasses() {
+    public List<Classe> getClasses() {
         return classes;
     }
 

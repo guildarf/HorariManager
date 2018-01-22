@@ -3,9 +3,9 @@ package montserrat.marcet.horarimanager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,7 +27,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 public class ChoiceActivity extends AppCompatActivity {
 
@@ -66,9 +67,16 @@ public class ChoiceActivity extends AppCompatActivity {
                 builder.setTitle(R.string.confirm);
                 String msg=getString(R.string.confirmDeleteMessage);
                 builder.setMessage( String.format(msg,horariNameList.get(pos)));
+
                 builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference base_dades_firebase = database.getReference(Constants.FIREBASE_CHILD_HORARIS); //ens conectem a la base de dades
+                            base_dades_firebase.child(horariNameList.get(pos)).removeValue();
+
+
                         File dir = getFilesDir();
                         File file = new File(dir, horariNameList.get(pos));
                         boolean deleted = file.delete();
@@ -108,6 +116,9 @@ public class ChoiceActivity extends AppCompatActivity {
 
     }
 
+
+
+
     private void guardarHorarisName() {
 
         FileOutputStream fos;
@@ -119,11 +130,35 @@ public class ChoiceActivity extends AppCompatActivity {
             oos.writeObject(new HashSet<String>(horariNameList));
             oos.close();
             Log.v("","llista guardada");
+
         } catch (FileNotFoundException e) {
             Log.v("eeeeeee",e.getMessage());
         } catch (IOException e) {
             Log.v("eeeeeee2",e.getMessage());
         }
+
+
+
+
+//        // Read from the database
+//        base_dades_firebase.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                String value = dataSnapshot.getValue(String.class);
+//                Log.d(TAG, "Value is: " + value);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", error.toException());
+//            }
+//        });
+
+
+
 
     }
 
@@ -146,6 +181,8 @@ public class ChoiceActivity extends AppCompatActivity {
         return a;
 
     }
+
+
 
     private HashSet<String> recuperarhoraris() {
         FileInputStream fis;

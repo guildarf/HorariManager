@@ -45,7 +45,6 @@
     <!-- Strings related to creation -->
     <string name="titol">Previsualització Horari UPC</string>
     <string name="action_settings">Ajustos</string>
-    <string name="Grup" translatable="false">104</string>
     <string name="triar_grup">Escull grup per cada assignatura</string>
     <string name="hores">Hores</string>
     <string name="dl">Dilluns</string>

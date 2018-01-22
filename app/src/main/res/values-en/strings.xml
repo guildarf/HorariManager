@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HorariManager</string>
-    <string name="triar_grup">\"Choose group for each subject \"</string>
+    <string name="triar_grup">Choose group for each subject</string>
     <string name="titol_final">Final UPC Schedule</string>
     <string name="titol">UPC Schedule Preview</string>
     <string name="tipus">Type</string>
@@ -53,6 +53,6 @@
     <string name="falta_correu">An email must be written</string>
     <string name="falta_correu_i_contra">E-mail and password  must be written</string>
     <string name="minim_5">You must select at least 5 subjects before continuing</string>
-    <string name="max_10">"You cannot select more than 10 subjects "</string>
+    <string name="max_10">You cannot select more than 10 subjects</string>
     <string name="escollir_grau_abans">You must choose a degree before</string>
 </resources>

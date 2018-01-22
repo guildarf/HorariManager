@@ -2,6 +2,7 @@ package montserrat.marcet.horarimanager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sakum on 14/01/2018.
@@ -11,15 +12,26 @@ public class Assignattura implements Serializable {
     String codi;
     String nom;
     String idioma;
-    ArrayList<Grups> grups;
+    List<Grups> grups = new ArrayList<>();
     Grups grupoElegido;
+
 
     public Assignattura(String codi, String nom, String idioma) {
         this.codi = codi;
         this.nom = nom;
         this.idioma = idioma;
-        grups=new ArrayList<>();
     }
+
+    public Assignattura(String codi, String nom, String idioma,ArrayList<Grups>grups,Grups grupoElegido) {
+        this.codi = codi;
+        this.nom = nom;
+        this.idioma = idioma;
+        this.grups = grups;
+        this.grupoElegido = grupoElegido;
+    }
+
+    public Assignattura() {}
+
 
     public Assignattura(String nom) {
         this.nom=nom;
@@ -57,7 +69,7 @@ public class Assignattura implements Serializable {
         this.grupoElegido = grupoElegido;
     }
 
-    public ArrayList<Grups> getGrups() {
+    public List<Grups> getGrups() {
         return grups;
     }
 
